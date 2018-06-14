@@ -1,3 +1,12 @@
-<p>
-  project-detail works!
-</p>
+<ngb-tabset justify="justified">
+  <ngb-tab title="配套">
+    <ng-template ngbTabContent>
+      <p>地图</p>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="详情">
+    <ng-template ngbTabContent>
+      <div [innerHTML]="detail_markup"></div>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>

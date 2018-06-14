@@ -1,3 +1,7 @@
-<p>
-  house-thumb works!
-</p>
+<div class="card">
+  <img class="card-img-top" [src]="mock_house.url" alt="">
+  <div class="card-body">
+    <h6 class="card-title">{{ mock_house.name }}</h6>
+    <p class="card-text">{{ mock_house.detail }}</p>
+  </div>
+</div>

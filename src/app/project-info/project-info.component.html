@@ -9,24 +9,26 @@
       约{{ mock_project.price }}元/平方米
     </div>
   </div>
-</div>
 
-<p class="text-muted text-small m-0">{{ mock_project.location }}</p>
-
-<div>
-  <span *ngFor="let tag of mock_project.tags">
-    <app-tag [name]=tag></app-tag>
-  </span>
-</div>
-
-<div class="container-fluid">
-  <div class="row text-muted text-center text-small">
-    <div class="col-6 border my-3 py-2">
-      <i class="fa fa-share-square-o"></i>
-      {{ mock_project.recommend_count }}推荐
-    </div>
-    <div class="col-6 border my-3 py-2">
-        <i class="fa fa-handshake-o"></i>
-        {{ mock_project.deal_count }}成交</div>
+  <div class="row">
+      <p class="text-muted text-small m-0">{{ mock_project.location }}</p>
   </div>
+
+  <div class="row">
+      <div>
+        <span *ngFor="let tag of mock_project.tags">
+          <app-tag [name]=tag></app-tag>
+        </span>
+      </div>
+  </div>
+
+  <div class="row text-muted text-center text-small">
+      <div class="col-6 border mt-3 py-2">
+        <i class="fa fa-share-square-o"></i>
+        {{ mock_project.recommend_count }}推荐
+      </div>
+      <div class="col-6 border mt-3 py-2">
+          <i class="fa fa-handshake-o"></i>
+          {{ mock_project.deal_count }}成交</div>
+    </div>
 </div>

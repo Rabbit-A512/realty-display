@@ -16,6 +16,7 @@ import { ShowHouseComponent } from './show-house/show-house.component';
 import { HouseThumbComponent } from './house-thumb/house-thumb.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { TagComponent } from './tag/tag.component';
+import { HousesOnSaleComponent } from './houses-on-sale/houses-on-sale.component';
 
 const appRoutes: Routes = [
   {
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     ShowHouseComponent,
     HouseThumbComponent,
     ProjectDetailComponent,
-    TagComponent
+    TagComponent,
+    HousesOnSaleComponent
   ],
   imports: [
     BrowserModule,
