@@ -134,7 +134,7 @@ GET /api/house_types/:id
 
 ```json
 {
-  "project_id": "13n413mmmpdp1m3"
+  "project_id": "13n413mmmpdp1m3",
   "carousels": [
     "url1",
     "url2",
