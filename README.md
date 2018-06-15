@@ -30,3 +30,208 @@ Angular版本选择6.0.x，根据更新日志介绍，目前的新版本性能�
 关于Angular项目的部署，使用cli提供的命令`ng build`可以快速打包一个项目，放在服务器上使用Nginx代理就可以使用了（这种方式在本地已经成功）。
 
 生产级别的部署需要使用`ng build --prod`，会有不小的性能提升。但是我在使用生产级别部署时会遇到某个ts类缺少参数的错误，这个问题还没解决。
+
+## API设计
+
+### 首页轮播图
+
+GET /api/carousel
+
+返回:
+
+```json
+[
+  "url1",
+  "url2",
+  "url3"
+]
+```
+
+### 获得所有project
+
+GET /api/projects
+
+返回:
+
+```json
+[
+  {
+    "project_id": "13kmmkmkankasd",
+    "carousels": [
+      "url1",
+      "url2",
+      "url3"
+    ],
+    "name": "万科麓山",
+    "size": "125",
+    "price": "59000",
+    "address": "彩云南路",
+    "tags": ["a", "b", "c"],
+    "follow_amount": 7777,
+    "deal_amount": 3333,
+    "reason": "<p>This is a reason!</p>",
+    "detail": "<p>Detail matters.</p>",
+    "location": "113.223,123.9",
+    "telephone": "15012312312",
+  },
+  {
+    "project_id": "13kmmkmkankasd",
+    "carousels": [
+      "url1",
+      "url2",
+      "url3"
+    ],
+    "name": "万科麓山",
+    "size": "125",
+    "price": "59000",
+    "address": "彩云南路",
+    "tags": ["a", "b", "c"],
+    "follow_amount": 7777,
+    "deal_amount": 3333,
+    "reason": "<p>This is a reason!</p>",
+    "detail": "<p>Detail matters.</p>",
+    "location": "113.223,123.9",
+    "telephone": "15012312312"
+  },
+]
+```
+
+### 获得特定project
+
+GET /api/projects/:id
+
+返回:
+
+```json
+{
+  "carousels": [
+    "url1",
+    "url2",
+    "url3"
+  ],
+  "name": "万科麓山",
+  "size": "125",
+  "price": "59000",
+  "address": "彩云南路",
+  "tags": ["a", "b", "c"],
+  "follow_amount": 7777,
+  "deal_amount": 3333,
+  "reason": "<p>This is a reason!</p>",
+  "detail": "<p>Detail matters.</p>",
+  "location": "113.223,123.9",
+  "telephone": "15012312312",
+  "house_type_ids": [
+    "aasdasdef143413",
+    "1343efasfadfa",
+    "14mrln3r13knr"
+  ]
+}
+```
+
+### 获得特定house_type
+
+GET /api/house_types/:id
+
+```json
+{
+  "project_id": "13n413mmmpdp1m3"
+  "carousels": [
+    "url1",
+    "url2",
+    "url3"
+  ],
+  "name": "一个户型名称",
+  "size": "两室两厅125平方米",
+  "price": "59000",
+  "tags": ["a", "b", "c"],
+  "reason": "<p>This is a reason!</p>",
+  "telephone": "15045645645",
+  "discount": "打八折",
+  "orientation": "南向",
+  "decoration": "精装"
+}
+```
+
+### 新增一个项目
+
+POST /api/projects/
+
+发送:
+
+```json
+{
+  "name": "万科麓山",
+  "size": "125",
+  "price": "59000",
+  "address": "彩云南路",
+  "tags": "a,b,c",
+  "deal_amount": 3333,
+  "reason": "<p>This is a reason!</p>",
+  "detail": "<p>Detail matters.</p>",
+  "location": "113.223,123.9",
+  "telephone": "15012312312"
+}
+```
+
+
+
+### 更新一个项目
+
+PUT /api/projects/:id
+
+发送:
+
+```json
+{
+  "name": "万科麓山",
+  "size": "125",
+  "price": "59000",
+  "address": "彩云南路",
+  "tags": "a,b,c",
+  "deal_amount": 3333,
+  "reason": "<p>This is a reason!</p>",
+  "detail": "<p>Detail matters.</p>",
+  "location": "113.223,123.9",
+  "telephone": "15012312312"
+}
+```
+
+返回:
+
+```json
+{
+  "project_id": "n123m1l2m3ker",
+  "name": "万科麓山",
+  "size": "125",
+  "price": "59000",
+  "address": "彩云南路",
+  "tags": "a,b,c",
+  "deal_amount": 3333,
+  "reason": "<p>This is a reason!</p>",
+  "detail": "<p>Detail matters.</p>",
+  "location": "113.223,123.9",
+  "telephone": "15012312312"
+}
+```
+
+### 删除一个project
+
+DELETE /api/projects/:id
+
+返回:
+
+```json
+{
+  "project_id": "n123m1l2m3ker",
+  "name": "万科麓山",
+  "size": "125",
+  "price": "59000",
+  "address": "彩云南路",
+  "tags": "a,b,c",
+  "deal_amount": 3333,
+  "reason": "<p>This is a reason!</p>",
+  "detail": "<p>Detail matters.</p>",
+  "location": "113.223,123.9",
+  "telephone": "15012312312"
+}
+```

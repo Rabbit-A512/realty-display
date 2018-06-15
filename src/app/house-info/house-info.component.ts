@@ -18,5 +18,9 @@ export class HouseInfoComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  // GET /api/projects/:id
+  // GET /api/home/carousel
+  // POST /api/auth body: password=password
+  // created_at: timestamp
+  //
 }

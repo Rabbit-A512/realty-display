@@ -1,0 +1,108 @@
+<form [formGroup]="form" (ngSubmit)="!project ? newProject(form.value) : updateProject(form.value)">
+  <h3 *ngIf="!project">新建项目</h3>
+  <h3 *ngIf="project">更新项目</h3>
+
+  <div class="form-row my-3">
+    <div class="col">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">项目名称</span>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="请输入项目名称..."
+          formControlName="name">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row my-3">
+    <div class="col-md-4">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">面积</span>
+        </div>
+        <input
+          class="form-control"
+          formControlName="size"
+          type="number">
+        <div class="input-group-append">
+          <span class="input-group-text">平方米</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 offset-md-2">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">价格</span>
+        </div>
+        <input
+          class="form-control"
+          formControlName="price"
+          type="number">
+        <div class="input-group-append">
+          <span class="input-group-text">元/平方米</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row my-3">
+    <div class="col">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">地点</span>
+        </div>
+        <input
+          class="form-control"
+          formControlName="location"
+          readonly
+          type="text">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row my-3">
+      <div class="col-md-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">推荐次数</span>
+          </div>
+          <input
+            class="form-control"
+            formControlName="size"
+            type="number">
+        </div>
+      </div>
+      <div class="col-md-4 offset-md-2">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">成交次数</span>
+          </div>
+          <input
+            class="form-control"
+            formControlName="price"
+            type="number">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row my-3">
+      <div class="col">
+        <h4>详情</h4>
+        <quill-editor formControlName="detail_markup"></quill-editor>
+      </div>
+    </div>
+
+    <div class="form-row my-3">
+      <div class="col">
+        <h4>推荐理由</h4>
+        <quill-editor formControlName="reason_markup"></quill-editor>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg">提交</button>
+</form>
+
+<div>{{ form.value | json }}</div>

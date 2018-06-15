@@ -1,44 +1,25 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { AdminModule } from './admin/admin.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MyCarouselComponent } from './my-carousel/my-carousel.component';
-import { ShowProjectComponent } from './show-project/show-project.component';
 import { HomeComponent } from './home/home.component';
+import { HouseDetailComponent } from './house-detail/house-detail.component';
+import { HouseInfoComponent } from './house-info/house-info.component';
+import { HouseThumbComponent } from './house-thumb/house-thumb.component';
+import { HousesOnSaleComponent } from './houses-on-sale/houses-on-sale.component';
+import { MyCarouselComponent } from './my-carousel/my-carousel.component';
+import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ProjectInfoComponent } from './project-info/project-info.component';
+import { ProjectThumbComponent } from './project-thumb/project-thumb.component';
 import { ReasonComponent } from './reason/reason.component';
 import { ShowHouseComponent } from './show-house/show-house.component';
-import { HouseThumbComponent } from './house-thumb/house-thumb.component';
-import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { ShowProjectComponent } from './show-project/show-project.component';
 import { TagComponent } from './tag/tag.component';
-import { HousesOnSaleComponent } from './houses-on-sale/houses-on-sale.component';
-import { ProjectThumbComponent } from './project-thumb/project-thumb.component';
-import { HouseInfoComponent } from './house-info/house-info.component';
-import { HouseDetailComponent } from './house-detail/house-detail.component';
-
-const appRoutes: Routes = [
-  {
-    path: '',
-    component: HomeComponent
-  },
-  {
-    path: 'home',
-    redirectTo: '/'
-  },
-  {
-    path: 'project',
-    component: ShowProjectComponent
-  },
-  {
-    path: 'house',
-    component: ShowHouseComponent
-  }
-];
 
 @NgModule({
   declarations: [
@@ -61,7 +42,8 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
+    AdminModule,
     NgbModule.forRoot()
   ],
   providers: [],
