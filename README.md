@@ -173,7 +173,23 @@ POST /api/projects/
 }
 ```
 
+返回:
 
+```json
+{
+  "project_id": "n123m1l2m3ker",
+  "name": "万科麓山",
+  "size": "125",
+  "price": "59000",
+  "address": "彩云南路",
+  "tags": "a,b,c",
+  "deal_amount": 3333,
+  "reason": "<p>This is a reason!</p>",
+  "detail": "<p>Detail matters.</p>",
+  "location": "113.223,123.9",
+  "telephone": "15012312312"
+}
+```
 
 ### 更新一个项目
 
@@ -200,7 +216,6 @@ PUT /api/projects/:id
 
 ```json
 {
-  "project_id": "n123m1l2m3ker",
   "name": "万科麓山",
   "size": "125",
   "price": "59000",
