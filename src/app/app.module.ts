@@ -17,6 +17,9 @@ import { HouseThumbComponent } from './house-thumb/house-thumb.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { TagComponent } from './tag/tag.component';
 import { HousesOnSaleComponent } from './houses-on-sale/houses-on-sale.component';
+import { ProjectThumbComponent } from './project-thumb/project-thumb.component';
+import { HouseInfoComponent } from './house-info/house-info.component';
+import { HouseDetailComponent } from './house-detail/house-detail.component';
 
 const appRoutes: Routes = [
   {
@@ -30,6 +33,10 @@ const appRoutes: Routes = [
   {
     path: 'project',
     component: ShowProjectComponent
+  },
+  {
+    path: 'house',
+    component: ShowHouseComponent
   }
 ];
 
@@ -45,7 +52,10 @@ const appRoutes: Routes = [
     HouseThumbComponent,
     ProjectDetailComponent,
     TagComponent,
-    HousesOnSaleComponent
+    HousesOnSaleComponent,
+    ProjectThumbComponent,
+    HouseInfoComponent,
+    HouseDetailComponent,
   ],
   imports: [
     BrowserModule,

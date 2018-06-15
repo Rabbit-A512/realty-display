@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-project-info',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectInfoComponent implements OnInit {
 
-  mock_project = {
+  @Input() mock_project = {
     'name': '万科麓山',
     'size': '125',
     'price': '59000',
