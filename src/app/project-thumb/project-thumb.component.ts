@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Project } from '../models/project';
 
 @Component({
   selector: 'app-project-thumb',
@@ -6,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project-thumb.component.css']
 })
 export class ProjectThumbComponent implements OnInit {
-
-  url = 'https://ng-bootstrap.github.io/img/logo-stack.png';
+  @Input() project: Project;
 
   constructor() { }
 

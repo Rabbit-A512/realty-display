@@ -2,21 +2,21 @@
 <div class="container-fluid my-1">
   <div class="row">
     <div class="col-6 p-0">
-      <span>{{ mock_project.name }}</span>
-      <span class="text-muted text-smaller">约{{ mock_project.size }}平方米</span>
+      <span>{{ project.name }}</span>
+      <span class="text-muted text-smaller">约{{ project.size }}平方米</span>
     </div>
     <div class="col-6 text-right">
-      约{{ mock_project.price }}元/平方米
+      约{{ project.price }}元/平方米
     </div>
   </div>
 
   <div class="row">
-      <p class="text-muted text-small m-0">{{ mock_project.location }}</p>
+      <p class="text-muted text-small m-0">{{ project.address }}</p>
   </div>
 
   <div class="row">
-      <div>
-        <span *ngFor="let tag of mock_project.tags">
+      <div *ngIf="project.tags[0]">
+        <span *ngFor="let tag of project.tags">
           <app-tag [name]=tag></app-tag>
         </span>
       </div>
@@ -25,10 +25,10 @@
   <div class="row text-muted text-center text-small">
       <div class="col-6 border mt-3 py-2">
         <i class="fa fa-share-square-o"></i>
-        {{ mock_project.recommend_count }}推荐
+        {{ project.follow_amount }}推荐
       </div>
       <div class="col-6 border mt-3 py-2">
           <i class="fa fa-handshake-o"></i>
-          {{ mock_project.deal_count }}成交</div>
+          {{ project.deal_amount }}成交</div>
     </div>
 </div>

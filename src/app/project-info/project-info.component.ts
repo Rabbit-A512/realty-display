@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Project } from '../models/project';
 
 @Component({
   selector: 'app-project-info',
@@ -7,15 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProjectInfoComponent implements OnInit {
 
-  @Input() mock_project = {
-    'name': '万科麓山',
-    'size': '125',
-    'price': '59000',
-    'location': '广东省深圳市布吉区布龙路与吉华路交汇处',
-    'tags': ['银湖山', '社区公立小学', '临地铁', '梦享家精装'],
-    'recommend_count': 7835,
-    'deal_count': 167
-  };
+  @Input() project: Project;
 
   constructor() { }
 

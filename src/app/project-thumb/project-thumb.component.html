@@ -1,8 +1,8 @@
 <div class="card">
-  <a routerLink='/project'>
-    <img [src]="url" alt="" class="card-img-top">
+  <a [routerLink]="['/project', project.project_id]">
+    <img src="../../assets/images/avatar.png" alt="" class="card-img-top">
   </a>
   <div class="card-body bg-light">
-    <h5>万科麓山</h5>
+    <h5>{{ project.name }}</h5>
   </div>
 </div>

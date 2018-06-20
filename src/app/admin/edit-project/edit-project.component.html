@@ -1,9 +1,11 @@
 <form [formGroup]="form" (ngSubmit)="!project ? newProject(form.value) : updateProject(form.value)">
-  <h3 *ngIf="!project">新建项目</h3>
-  <h3 *ngIf="project">更新项目</h3>
+  <h2 *ngIf="!project">新建项目</h2>
+  <h2 *ngIf="project">更新项目</h2>
 
   <div class="form-row my-3">
     <div class="col">
+      <hr>
+      <h4>基本信息</h4>
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">项目名称</span>
@@ -13,6 +15,21 @@
           class="form-control"
           placeholder="请输入项目名称..."
           formControlName="name">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row my-3">
+    <div class="col">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">地址</span>
+        </div>
+        <input
+          class="form-control"
+          formControlName="address"
+          placeholder="请输入地址的文字描述..."
+          type="text">
       </div>
     </div>
   </div>
@@ -32,7 +49,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 offset-md-2">
+    <div class="col-md-4 offset-md-1">
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">价格</span>
@@ -49,21 +66,6 @@
   </div>
 
   <div class="form-row my-3">
-    <div class="col">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">地点</span>
-        </div>
-        <input
-          class="form-control"
-          formControlName="location"
-          readonly
-          type="text">
-      </div>
-    </div>
-  </div>
-
-  <div class="form-row my-3">
       <div class="col-md-4">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -71,38 +73,69 @@
           </div>
           <input
             class="form-control"
-            formControlName="size"
+            formControlName="follow_amount"
+            readonly
             type="number">
         </div>
       </div>
-      <div class="col-md-4 offset-md-2">
+      <div class="col-md-4 offset-md-1">
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">成交次数</span>
           </div>
           <input
             class="form-control"
-            formControlName="price"
+            formControlName="deal_amount"
             type="number">
         </div>
       </div>
     </div>
 
     <div class="form-row my-3">
-      <div class="col">
-        <h4>详情</h4>
-        <quill-editor formControlName="detail_markup"></quill-editor>
+      <div class="col-md-4">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">联系电话</span>
+          </div>
+          <input
+            formControlName="telephone"
+            class="form-control"
+            type="tel">
+        </div>
       </div>
     </div>
 
     <div class="form-row my-3">
       <div class="col">
+        <hr>
+        <h4>详情</h4>
+        <quill-editor formControlName="detail"></quill-editor>
+      </div>
+    </div>
+
+    <div class="form-row my-3">
+      <div class="col">
+        <hr>
         <h4>推荐理由</h4>
-        <quill-editor formControlName="reason_markup"></quill-editor>
+        <quill-editor formControlName="reason"></quill-editor>
+      </div>
+    </div>
+
+    <div class="form-row my-3">
+      <div class="col">
+        <hr>
+        <h4>选择坐标</h4>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">高德坐标</span>
+          </div>
+          <input
+            formControlName="location"
+            class="form-control"
+            type="text">
+        </div>
       </div>
     </div>
 
     <button type="submit" class="btn btn-primary btn-lg">提交</button>
 </form>
-
-<div>{{ form.value | json }}</div>

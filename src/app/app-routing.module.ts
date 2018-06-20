@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     redirectTo: '/'
   },
   {
-    path: 'project',
+    path: 'project/:project_id',
     component: ShowProjectComponent
   },
   {

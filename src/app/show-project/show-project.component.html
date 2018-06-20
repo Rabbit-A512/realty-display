@@ -1,10 +1,10 @@
 <app-my-carousel></app-my-carousel>
 <div class="p-3">
-  <app-project-info [mock_project]="mock_project"></app-project-info>
+  <app-project-info [project]="project"></app-project-info>
   <hr>
-  <app-reason [reason_markup]="reason_markup"></app-reason>
+  <app-reason [reason_markup]="project.reason"></app-reason>
   <hr>
   <app-houses-on-sale></app-houses-on-sale>
   <hr>
-  <app-project-detail></app-project-detail>
+  <app-project-detail [detail_markup]="project.detail" [location]="project.location"></app-project-detail>
 </div>

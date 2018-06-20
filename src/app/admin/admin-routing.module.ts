@@ -1,3 +1,4 @@
+import { UpdateProjectComponent } from './update-project/update-project.component';
 import { ReadProjectComponent } from './read-project/read-project.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -29,6 +30,10 @@ const adminRoutes: Routes = [
           {
             path: 'read',
             component: ReadProjectComponent
+          },
+          {
+            path: 'update/:project_id',
+            component: UpdateProjectComponent
           }
         ]
       },
