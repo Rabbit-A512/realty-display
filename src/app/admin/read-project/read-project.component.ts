@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../services/project.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -12,7 +13,8 @@ export class ReadProjectComponent implements OnInit {
 
   constructor(
     private projectService: ProjectService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -27,4 +29,10 @@ export class ReadProjectComponent implements OnInit {
     });
   }
 
+  delete_project(id) {
+    this.projectService.delete(id)
+      .subscribe(async deleted_project => {
+        await this.router.navigate(['/admin/manage-projects']);
+      });
+  }
 }
