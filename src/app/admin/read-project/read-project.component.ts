@@ -1,7 +1,8 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+
 import { ProjectService } from '../../services/project.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-read-project',
@@ -10,6 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ReadProjectComponent implements OnInit {
   projects = [];
+  modal: NgbModalRef;
 
   constructor(
     private projectService: ProjectService,
@@ -25,14 +27,15 @@ export class ReadProjectComponent implements OnInit {
   }
 
   open(content) {
-    this.modalService.open(content).result.then((result) => {
-    });
+    this.modal = this.modalService.open(content);
   }
 
   delete_project(id) {
+    console.log(this.modal);
     this.projectService.delete(id)
       .subscribe(async deleted_project => {
-        await this.router.navigate(['/admin/manage-projects']);
+        this.modal.close();
+        await this.router.navigate(['/admin']);
       });
   }
 }
