@@ -33,17 +33,26 @@ Angular版本选择6.0.x，根据更新日志介绍，目前的新版本性能�
 
 ## API设计
 
-### 首页轮播图
+### 获取首页轮播图
 
-GET /api/carousel
+GET /api/carousels
 
 返回:
 
 ```json
 [
-  "url1",
-  "url2",
-  "url3"
+  {
+    "url": "url1",
+    "project_id": "uuid"
+  },
+  {
+    "url": "url2",
+    "project_id": "uuid"
+  },
+  {
+    "url": "url3",
+    "project_id": "uuid"
+  },
 ]
 ```
 
@@ -58,9 +67,18 @@ GET /api/projects
   {
     "project_id": "13kmmkmkankasd",
     "carousels": [
-      "url1",
-      "url2",
-      "url3"
+      {
+        "image_id": "uuid",
+        "url": "url1"
+      },
+      {
+        "image_id": "uuid",
+        "url": "url1"
+      },
+      {
+        "image_id": "uuid",
+        "url": "url1"
+      }
     ],
     "name": "万科麓山",
     "size": "125",
@@ -77,9 +95,18 @@ GET /api/projects
   {
     "project_id": "13kmmkmkankasd",
     "carousels": [
-      "url1",
-      "url2",
-      "url3"
+      {
+        "image_id": "uuid",
+        "url": "url1"
+      },
+      {
+        "image_id": "uuid",
+        "url": "url1"
+      },
+      {
+        "image_id": "uuid",
+        "url": "url1"
+      }
     ],
     "name": "万科麓山",
     "size": "125",
@@ -105,9 +132,18 @@ GET /api/projects/:id
 ```json
 {
   "carousels": [
-    "url1",
-    "url2",
-    "url3"
+    {
+      "image_id": "uuid",
+      "url": "url1"
+    },
+    {
+      "image_id": "uuid",
+      "url": "url1"
+    },
+    {
+      "image_id": "uuid",
+      "url": "url1"
+    }
   ],
   "name": "万科麓山",
   "size": "125",
@@ -128,31 +164,7 @@ GET /api/projects/:id
 }
 ```
 
-### 获得特定house_type
-
-GET /api/house_types/:id
-
-```json
-{
-  "project_id": "13n413mmmpdp1m3",
-  "carousels": [
-    "url1",
-    "url2",
-    "url3"
-  ],
-  "name": "一个户型名称",
-  "size": "两室两厅125平方米",
-  "price": "59000",
-  "tags": ["a", "b", "c"],
-  "reason": "<p>This is a reason!</p>",
-  "telephone": "15045645645",
-  "discount": "打八折",
-  "orientation": "南向",
-  "decoration": "精装"
-}
-```
-
-### 新增一个项目
+### 新增一个project
 
 POST /api/projects/
 
@@ -191,7 +203,7 @@ POST /api/projects/
 }
 ```
 
-### 更新一个项目
+### 更新一个project
 
 PUT /api/projects/:id
 
@@ -248,5 +260,204 @@ DELETE /api/projects/:id
   "detail": "<p>Detail matters.</p>",
   "location": "113.223,123.9",
   "telephone": "15012312312"
+}
+```
+
+### 新增house_type
+
+POST /api/house_types
+
+发送：
+
+```json
+{
+  "project_id": "13n413mmmpdp1m3",
+  "name": "一个户型名称",
+  "size": "两室两厅125平方米",
+  "price": "59000",
+  "tags": "a,b,c",
+  "reason": "<p>This is a reason!</p>",
+  "telephone": "15045645645",
+  "discount": "打八折",
+  "orientation": "南向",
+  "decoration": "精装"
+}
+```
+
+返回：
+
+```json
+{
+  "project_id": "13n413mmmpdp1m3",
+  "house_type_id": "uuid",
+  "name": "一个户型名称",
+  "size": "两室两厅125平方米",
+  "price": "59000",
+  "tags": ["a", "b", "c"],
+  "reason": "<p>This is a reason!</p>",
+  "telephone": "15045645645",
+  "discount": "打八折",
+  "orientation": "南向",
+  "decoration": "精装"
+}
+```
+
+### 获得特定house_type
+
+GET /api/house_types/:id
+
+返回：
+
+```json
+{
+  "project_id": "13n413mmmpdp1m3",
+  "house_type_id": "uuid",
+  "carousels": [
+    {
+      "image_id": "uuid",
+      "url": "url1"
+    },
+    {
+      "image_id": "uuid",
+      "url": "url1"
+    },
+    {
+      "image_id": "uuid",
+      "url": "url1"
+    }
+  ],
+  "name": "一个户型名称",
+  "size": "两室两厅125平方米",
+  "price": "59000",
+  "tags": ["a", "b", "c"],
+  "reason": "<p>This is a reason!</p>",
+  "telephone": "15045645645",
+  "discount": "打八折",
+  "orientation": "南向",
+  "decoration": "精装"
+}
+```
+
+### 更新特定house_type
+
+PUT /api/house_types/:id
+
+发送：
+
+```json
+{
+  "name": "一个户型名称",
+  "size": "两室两厅125平方米",
+  "price": "59000",
+  "tags": "a,b,c",
+  "reason": "<p>This is a reason!</p>",
+  "telephone": "15045645645",
+  "discount": "打八折",
+  "orientation": "南向",
+  "decoration": "精装"
+}
+```
+
+返回：
+
+```json
+{
+  "project_id": "13n413mmmpdp1m3",
+  "house_type_id": "uuid",
+  "name": "一个户型名称",
+  "size": "两室两厅125平方米",
+  "price": "59000",
+  "tags": ["a", "b", "c"],
+  "reason": "<p>This is a reason!</p>",
+  "telephone": "15045645645",
+  "discount": "打八折",
+  "orientation": "南向",
+  "decoration": "精装"
+}
+```
+
+### 删除一个house_type
+
+DELETE /api/house_types/:id
+
+返回：
+
+```json
+{
+  "project_id": "13n413mmmpdp1m3",
+  "house_type_id": "uuid",
+  "name": "一个户型名称",
+  "size": "两室两厅125平方米",
+  "price": "59000",
+  "tags": ["a", "b", "c"],
+  "reason": "<p>This is a reason!</p>",
+  "telephone": "15045645645",
+  "discount": "打八折",
+  "orientation": "南向",
+  "decoration": "精装"
+}
+```
+
+### 新增图片
+
+POST /api/project_images/:project_id
+
+返回：
+
+```json
+{
+  "image_id": "uuid",
+  "url": "url1"
+}
+```
+
+POST /api/house_type_images/:house_type_id
+
+返回：
+
+```json
+{
+  "image_id": "uuid",
+  "url": "url1"
+}
+```
+
+DELETE /api/project_images/:image_id
+
+```json
+{
+  "image_id": "uuid",
+  "url": "url1"
+}
+```
+
+DELETE /api/house_type_images/:image_id
+
+```json
+{
+  "image_id": "uuid",
+  "url": "url1"
+}
+```
+
+###　更改轮播图状态
+
+POST /api/carousels/:project_id
+
+返回：
+
+```json
+{
+  "success": true
+}
+```
+
+DELETE /api/carousels/:project_id
+
+返回：
+
+```json
+{
+  "success": true
 }
 ```
