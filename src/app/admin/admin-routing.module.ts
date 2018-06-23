@@ -1,3 +1,4 @@
+import { ReadHouseComponent } from './read-house/read-house.component';
 import { UpdateProjectComponent } from './update-project/update-project.component';
 import { ReadProjectComponent } from './read-project/read-project.component';
 import { NgModule } from '@angular/core';
@@ -8,6 +9,8 @@ import { ManageCarouselComponent } from './manage-carousel/manage-carousel.compo
 import { ManageHousesComponent } from './manage-houses/manage-houses.component';
 import { ManageProjectsComponent } from './manage-projects/manage-projects.component';
 import { NewProjectComponent } from './new-project/new-project.component';
+import { NewHouseComponent } from './new-house/new-house.component';
+import { UpdateHouseComponent } from './update-house/update-house.component';
 
 const adminRoutes: Routes = [
   {
@@ -39,7 +42,21 @@ const adminRoutes: Routes = [
       },
       {
         path: 'manage-houses',
-        component: ManageHousesComponent
+        component: ManageHousesComponent,
+        children: [
+          {
+            path: 'new/:project_id',
+            component: NewHouseComponent
+          },
+          {
+            path: 'read/:project_id',
+            component: ReadHouseComponent
+          },
+          {
+            path: 'update/:house_id',
+            component: UpdateHouseComponent
+          }
+        ]
       },
       {
         path: 'manage-carousel',

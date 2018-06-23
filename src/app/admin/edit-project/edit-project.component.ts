@@ -1,4 +1,3 @@
-import { async } from '@angular/core/testing';
 import { Project } from './../../models/project';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';

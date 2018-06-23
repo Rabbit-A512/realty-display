@@ -1,24 +1,20 @@
-<app-search></app-search>
-<button class="btn btn-outline-success" routerLink='/admin/manage-projects/new'>
-  <span>新建项目</span>
+<button class="btn btn-outline-success" [routerLink]="['/admin/manage-houses/new', project_id]">
+  <span>新建户型</span>
   <i class="fa fa-plus"></i>
 </button>
+
 <ul class="list-group my-2">
-  <li class="list-group-item" *ngFor="let project of projects">
+  <li class="list-group-item" *ngFor="let house of houses">
     <div class="media">
       <img src="../../../assets/images/avatar.png" alt="" class="mr-3" width="50px">
       <div class="media-body">
-        <h5 class="mt-0">{{ project.name }}</h5>
+        <h5 class="mt-0">{{ house.name }}</h5>
         <button
-          [routerLink]="['/admin/manage-projects/update', project.project_id]"
+          [routerLink]="['/admin/manage-houses/update', house.typeId]"
           class="btn btn-primary btn-sm mr-1">更新</button>
         <button
           (click)="open(delete)"
-          class="btn btn-danger btn-sm mr-1">删除</button>
-        <button
-          [routerLink]="['/admin/manage-houses/read', project.project_id]"
-          class="btn btn-secondary btn-sm">户型管理</button>
-
+          class="btn btn-danger btn-sm">删除</button>
       </div>
 
       <ng-template #delete let-c="close" let-d="dismiss">
@@ -29,10 +25,10 @@
           </button>
         </div>
         <div class="modal-body">
-          <p class="text-danger">删除项目将会删除与其相关的所有数据，请慎重！</p>
+          <p class="text-danger">删除户型将会删除与其相关的所有数据，请慎重！</p>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-outline-dark" (click)="delete_project(project.project_id)">仍要删除</button>
+          <button class="btn btn-outline-dark" (click)="delete_house(house.house_type_id)">仍要删除</button>
           <button class="btn btn-outline-dark" (click)="c('Cross click')">取消</button>
         </div>
       </ng-template>

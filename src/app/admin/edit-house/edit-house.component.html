@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="!house ? newHouse(form.value) : updateHouse(form.value)">
+  <h2 *ngIf="!house">新建户型</h2>
+  <h2 *ngIf="house">更新户型</h2>
+
+  <div class="form-row my-3">
+    <div class="col">
+      <hr>
+      <h4>基本信息</h4>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">户型名称</span>
+        </div>
+        <input
+          class="form-control"
+          placeholder="请输入户型名称..."
+          formControlName="name"
+          type="text">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row my-3">
+    <div class="col"></div>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-lg">提交</button>
+</form>

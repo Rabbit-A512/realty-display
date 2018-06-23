@@ -31,7 +31,6 @@ export class ReadProjectComponent implements OnInit {
   }
 
   delete_project(id) {
-    console.log(this.modal);
     this.projectService.delete(id)
       .subscribe(async deleted_project => {
         this.modal.close();

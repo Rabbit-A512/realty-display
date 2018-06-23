@@ -7,9 +7,7 @@ import * as _ from 'lodash';
 export class ProjectService {
   private url = 'http://120.78.187.115:5000/api/projects';
 
-  constructor(
-    private router: Router,
-    private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getAll() {
     return this.http.get(this.url);
@@ -31,8 +29,4 @@ export class ProjectService {
     return this.http.delete(`${this.url}/${id}`);
   }
 
-  test() {
-    this.http.get(`http://120.78.187.115:5000/user`)
-      .subscribe(resp => console.log(resp));
-  }
 }
