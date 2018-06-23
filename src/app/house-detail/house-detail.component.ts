@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-house-detail',
@@ -7,22 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HouseDetailComponent implements OnInit {
 
-  house_detail_markup = `
-    <table>
-      <tr>
-        <th>户型优惠</th>
-        <td>无</td>
-      </tr>
-      <tr>
-        <th>户型朝向</th>
-        <td>南向</td>
-      </tr>
-      <tr>
-        <th>装修状况</th>
-        <td>精装</td>
-      </tr>
-    </table>
-  `;
+  @Input() house: any;
 
   constructor() { }
 

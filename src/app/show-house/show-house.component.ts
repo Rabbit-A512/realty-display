@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { HouseService } from './../services/house.service';
 
 @Component({
   selector: 'app-show-house',
@@ -7,26 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowHouseComponent implements OnInit {
 
-  mock_house = {
-    'name': '125平方米　四房',
-    'price': '59000',
-    'detail': '四房两厅两卫（约125平方米）',
-    'tags': ['南北通透', '大阳台', '全屋中央空调']
-  };
+  house: any;
 
-  reason_markup = `
-    <ol>
-      <li>全屋中央空调</li>
-      <li>伊莱克斯品牌厨具</li>
-      <li>汉斯格雅、TOTO品外卫浴设施</li>
-      <li>南北通透，通风采光俱佳</li>
-      <li>全屋收纳体系精心打造</li>
-    </ol>
-  `;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private houseService: HouseService
+  ) { }
 
   ngOnInit() {
+    this.route.paramMap
+      .subscribe(params => {
+        this.houseService.getOneById(params.get('house_id'))
+          .subscribe(house => {
+            this.house = house;
+          });
+      });
   }
 
 }

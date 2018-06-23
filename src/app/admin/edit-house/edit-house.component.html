@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="!house ? newHouse(form.value) : updateHouse(form.value)">
+<form [formGroup]="form">
   <h2 *ngIf="!house">新建户型</h2>
   <h2 *ngIf="house">更新户型</h2>
 
@@ -11,6 +11,7 @@
           <span class="input-group-text">户型名称</span>
         </div>
         <input
+          required
           class="form-control"
           placeholder="请输入户型名称..."
           formControlName="name"
@@ -20,8 +21,106 @@
   </div>
 
   <div class="form-row my-3">
-    <div class="col"></div>
+    <div class="col">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">面积</span>
+        </div>
+        <input
+          type="text"
+          formControlName="size"
+          placeholder="请输入户型大小的文字描述，如：两室两厅125平方米"
+          class="form-control">
+      </div>
+    </div>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-lg">提交</button>
+  <div class="form-row my-3">
+    <div class="col">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">价格</span>
+        </div>
+        <input
+          type="text"
+          formControlName="price"
+          placeholder="请输入户型价格的文字描述，如：5.9万/平方米、59000元/平方米"
+          class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row my-3">
+    <div class="col-md-4">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">优惠信息</span>
+        </div>
+        <input
+          type="text"
+          formControlName="discount"
+          class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row my-3">
+    <div class="col-md-4">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">户型朝向</span>
+        </div>
+        <input
+          type="text"
+          formControlName="orientation"
+          class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row my-3">
+    <div class="col-md-4">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">装修状况</span>
+        </div>
+        <input
+          type="text"
+          formControlName="decoration"
+          class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row my-3">
+    <div class="col-md-4">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">联系电话</span>
+        </div>
+        <input
+          formControlName="telephone"
+          type="text"
+          class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row my-3">
+    <div class="col">
+      <hr>
+      <h4>推荐理由</h4>
+      <quill-editor formControlName="reason"></quill-editor>
+    </div>
+  </div>
+
 </form>
+
+<hr>
+<h4>标签管理</h4>
+<div class="form-row my-3">
+  <div class="col-md-3">
+    <app-tag-editor [tags]="house ? house.tags : []" (tags_change)="onTagChange($event)"></app-tag-editor>
+  </div>
+</div>
+<button (click)="!house ? newHouse(form.value) : updateHouse(form.value)" class="btn btn-primary btn-lg">提交</button>

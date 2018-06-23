@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ReasonComponent implements OnInit {
 
-  @Input() reason_markup: string;
+  @Input() reason: string;
 
   constructor() { }
 

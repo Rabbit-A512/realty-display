@@ -2,9 +2,9 @@
 <div class="p-3">
   <app-project-info [project]="project"></app-project-info>
   <hr>
-  <app-reason [reason_markup]="project.reason"></app-reason>
+  <app-reason [reason]="project.reason"></app-reason>
   <hr>
-  <app-houses-on-sale></app-houses-on-sale>
+  <app-houses-on-sale [house_ids]="project.house_type_ids"></app-houses-on-sale>
   <hr>
-  <app-project-detail [detail_markup]="project.detail" [location]="project.location"></app-project-detail>
+  <app-project-detail [detail]="project.detail" [location]="project.location"></app-project-detail>
 </div>

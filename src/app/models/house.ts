@@ -8,4 +8,6 @@ export interface House {
   discount: string;
   orientation: string;
   decoration: string;
+  house_type_id: string;
+  project_id: string;
 }

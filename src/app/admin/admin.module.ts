@@ -20,6 +20,7 @@ import { ReadProjectComponent } from './read-project/read-project.component';
 import { SearchComponent } from './search/search.component';
 import { UpdateHouseComponent } from './update-house/update-house.component';
 import { UpdateProjectComponent } from './update-project/update-project.component';
+import { TagEditorComponent } from './tag-editor/tag-editor.component';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { UpdateProjectComponent } from './update-project/update-project.componen
     ReadHouseComponent,
     UpdateHouseComponent,
     EditHouseComponent,
+    TagEditorComponent,
   ],
   exports: [
     AdminHomeComponent

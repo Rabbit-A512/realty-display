@@ -1,3 +1,4 @@
+import { TagChangeEventArgs } from './../tag-editor/tag-editor.component';
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -26,7 +27,7 @@ export class EditHouseComponent implements OnInit, OnChanges {
     this.form = this.fb.group({
       'name': [''],
       'size': [''],
-      'price': [0],
+      'price': [''],
       'tags': [''],
       'reason': [''],
       'telephone': [''],
@@ -44,7 +45,7 @@ export class EditHouseComponent implements OnInit, OnChanges {
     this.form.get('name').setValue(this.house.name);
     this.form.get('size').setValue(this.house.size);
     this.form.get('price').setValue(this.house.price);
-    this.form.get('tags').setValue(this.house.tags.toString());
+    this.form.get('tags').setValue(this.house.tags.join(','));
     this.form.get('reason').setValue(this.house.reason);
     this.form.get('telephone').setValue(this.house.telephone);
     this.form.get('discount').setValue(this.house.discount);
@@ -56,17 +57,21 @@ export class EditHouseComponent implements OnInit, OnChanges {
     value.project_id = this.project_id;
     this.houseService.create(value)
       .subscribe(async new_house => {
-        await this.router.navigate(['/admin/manage-houses']);
+        await this.router.navigate(['/admin/manage-projects']);
       });
   }
 
   updateHouse(value) {
-    value.project_id = this.project_id;
-    value.house_type_id = this.house['house_type_id'];
-    this.houseService.update(value)
+    value.project_id = this.house.project_id;
+    value.house_type_id = this.house.house_type_id;     this.houseService.update(value)
       .subscribe(async updated_house => {
-        await this.router.navigate(['/admin/manage-houses']);
+        console.log(updated_house);
+        await this.router.navigate(['/admin/manage-houses/read', this.house.project_id]);
       });
+  }
+
+  onTagChange(args: TagChangeEventArgs) {
+    this.form.get('tags').setValue(args.tags_string);
   }
 
 }

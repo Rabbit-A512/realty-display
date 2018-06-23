@@ -1,3 +1,4 @@
+import { TagChangeEventArgs } from './../tag-editor/tag-editor.component';
 import { Project } from './../../models/project';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
@@ -37,12 +38,15 @@ export class EditProjectComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+    if (!this.form) {
+      return;
+    }
     this.form.get('name').setValue(this.project.name);
     this.form.get('size').setValue(this.project.size);
     this.form.get('price').setValue(this.project.price);
     this.form.get('address').setValue(this.project.address);
     this.form.get('location').setValue(this.project.location);
-    this.form.get('tags').setValue(this.project.tags);
+    this.form.get('tags').setValue(this.project.tags.join(','));
     this.form.get('follow_amount').setValue(this.project.follow_amount);
     this.form.get('deal_amount').setValue(this.project.deal_amount);
     this.form.get('detail').setValue(this.project.detail);
@@ -63,6 +67,10 @@ export class EditProjectComponent implements OnInit, OnChanges {
       .subscribe(async updated_project => {
         await this.router.navigate(['/admin/manage-projects/read']);
       });
+  }
+
+  onTagChange(args: TagChangeEventArgs) {
+    this.form.get('tags').setValue(args.tags_string);
   }
 
 }

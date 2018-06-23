@@ -1,3 +1,4 @@
+import { House } from './../../models/house';
 import { HouseService } from './../../services/house.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateHouseComponent implements OnInit {
 
-  house: any;
+  house: House;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,8 +22,7 @@ export class UpdateHouseComponent implements OnInit {
       .subscribe(params => {
         this.houseService.getOneById(params.get('house_id'))
           .subscribe(house => {
-            console.log(house);
-            this.house = house;
+            this.house = house as House;
           });
       });
   }

@@ -19,7 +19,7 @@ const appRoutes: Routes = [
     component: ShowProjectComponent
   },
   {
-    path: 'house',
+    path: 'house/:house_id',
     component: ShowHouseComponent
   }
 ];

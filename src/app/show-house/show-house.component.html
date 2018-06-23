@@ -1,8 +1,8 @@
 <app-my-carousel></app-my-carousel>
 <div class="p-3">
-    <app-house-info [mock_house]="mock_house"></app-house-info>
+    <app-house-info [house]="house"></app-house-info>
     <hr>
     <app-house-detail></app-house-detail>
     <hr>
-    <app-reason [reason_markup]="reason_markup"></app-reason>
+    <app-reason [reason]="house.reason"></app-reason>
 </div>

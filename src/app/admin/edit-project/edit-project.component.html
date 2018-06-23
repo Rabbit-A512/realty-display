@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="!project ? newProject(form.value) : updateProject(form.value)">
+<form [formGroup]="form">
   <h2 *ngIf="!project">新建项目</h2>
   <h2 *ngIf="project">更新项目</h2>
 
@@ -14,6 +14,7 @@
           type="text"
           class="form-control"
           placeholder="请输入项目名称..."
+          required
           formControlName="name">
       </div>
     </div>
@@ -33,6 +34,7 @@
       </div>
     </div>
   </div>
+
 
   <div class="form-row my-3">
     <div class="col-md-4">
@@ -137,5 +139,14 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary btn-lg">提交</button>
 </form>
+
+<hr>
+<h4>标签管理</h4>
+<div class="form-row my-3">
+  <div class="col-md-3">
+    <app-tag-editor [tags]="project ? project.tags : []" (tags_change)="onTagChange($event)"></app-tag-editor>
+  </div>
+</div>
+
+<button (click)="!project ? newProject(form.value) : updateProject(form.value)" class="btn btn-primary btn-lg">提交</button>

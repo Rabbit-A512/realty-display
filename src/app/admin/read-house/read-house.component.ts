@@ -14,6 +14,7 @@ export class ReadHouseComponent implements OnInit {
   houses = [];
   house_ids: string[];
   project_id = '';
+  project_name = '';
   modal: NgbModalRef;
 
   constructor(
@@ -31,6 +32,7 @@ export class ReadHouseComponent implements OnInit {
         this.project_id = params.get('project_id');
         this.projectService.getOneById(this.project_id)
           .subscribe(project => {
+            this.project_name = project['name'];
             for (let i = 0; i < project['house_type_ids'].length; i++) {
               this.houseService.getOneById(project['house_type_ids'][i])
                 .subscribe(house => {
@@ -49,7 +51,7 @@ export class ReadHouseComponent implements OnInit {
     this.houseService.delete(id)
       .subscribe(async deleted_house => {
         this.modal.close();
-        await this.router.navigate(['/admin']);
+        await this.router.navigate(['/admin/manage-projects']);
       });
   }
 

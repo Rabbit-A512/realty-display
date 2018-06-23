@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProjectDetailComponent implements OnInit {
 
-  @Input() detail_markup: string;
+  @Input() detail: string;
   @Input() location: string;
 
   constructor() { }

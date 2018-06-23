@@ -1,2 +1,15 @@
 <h5 class="text-primary">户型信息</h5>
-<div [innerHTML]="house_detail_markup"></div>
+<table>
+  <tr>
+    <th>优惠信息</th>
+    <td>{{ house.discount }}</td>
+  </tr>
+  <tr>
+    <th>户型朝向</th>
+    <td>{{ house.orientation }}</td>
+  </tr>
+  <tr>
+    <th>装修状况</th>
+    <td>{{ house.decoration }}</td>
+  </tr>
+</table>

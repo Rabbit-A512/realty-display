@@ -11,4 +11,5 @@ export interface Project {
   detail: string;
   location: string;
   telephone: string;
+  house_type_ids: string[];
 }

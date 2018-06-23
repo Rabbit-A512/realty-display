@@ -1,0 +1,17 @@
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">新标签</span>
+  </div>
+  <input
+    #newTag
+    type="text"
+    (keyup.enter)="addTag(newTag)"
+    class="form-control">
+</div>
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let tag of tags">
+    <span>{{ tag }}</span>
+    <button (click)="deleteTag(tag)" class="btn btn-danger btn-sm float-right"><i class="fa fa-times"></i></button>
+  </li>
+</ul>

@@ -7,20 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HouseInfoComponent implements OnInit {
 
-  @Input() mock_house = {
-    'name': '125平方米　四房',
-    'price': '59000',
-    'detail': '四房两厅两卫（约125平方米）',
-    'tags': ['南北通透', '大阳台', '全屋中央空调']
-  };
+  @Input() house;
 
   constructor() { }
 
   ngOnInit() {
   }
-  // GET /api/projects/:id
-  // GET /api/home/carousel
-  // POST /api/auth body: password=password
-  // created_at: timestamp
-  //
+
 }

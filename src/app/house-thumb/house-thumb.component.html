@@ -1,9 +1,9 @@
 <div class="card">
-  <a routerLink='/house'>
-    <img class="card-img-top" [src]="mock_house.url" alt="">
+  <a [routerLink]="['/house', house.house_type_id]">
+    <img class="card-img-top" src="./../../assets/images/avatar.png" alt="">
   </a>
   <div class="card-body">
-    <h6 class="card-title">{{ mock_house.name }}</h6>
-    <p class="card-text">{{ mock_house.detail }}</p>
+    <h6 class="card-title">{{ house.name }}</h6>
+    <p class="card-text">{{ house.size }}</p>
   </div>
 </div>

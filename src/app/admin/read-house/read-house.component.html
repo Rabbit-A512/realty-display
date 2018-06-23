@@ -1,3 +1,4 @@
+<h2>项目名称：{{ project_name }}</h2>
 <button class="btn btn-outline-success" [routerLink]="['/admin/manage-houses/new', project_id]">
   <span>新建户型</span>
   <i class="fa fa-plus"></i>
@@ -10,7 +11,7 @@
       <div class="media-body">
         <h5 class="mt-0">{{ house.name }}</h5>
         <button
-          [routerLink]="['/admin/manage-houses/update', house.typeId]"
+          [routerLink]="['/admin/manage-houses/update', house.house_type_id]"
           class="btn btn-primary btn-sm mr-1">更新</button>
         <button
           (click)="open(delete)"

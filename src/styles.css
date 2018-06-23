@@ -8,3 +8,7 @@
 .text-smaller {
   font-size: smaller;
 }
+
+quill-editor {
+  display: block;
+}
