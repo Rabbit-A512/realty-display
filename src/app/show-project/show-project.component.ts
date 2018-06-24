@@ -22,7 +22,6 @@ export class ShowProjectComponent implements OnInit {
       .subscribe(params => {
         this.projectService.getOneById(params.get('project_id'))
           .subscribe(project => {
-            console.log(project);
             this.project = project as Project;
           });
       });

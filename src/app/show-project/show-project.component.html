@@ -1,10 +1,14 @@
-<app-my-carousel></app-my-carousel>
+<app-my-carousel [carousels]="project?.carousels"></app-my-carousel>
 <div class="p-3">
   <app-project-info [project]="project"></app-project-info>
   <hr>
-  <app-reason [reason]="project.reason"></app-reason>
+  <app-reason [reason]="project?.reason"></app-reason>
   <hr>
-  <app-houses-on-sale [house_ids]="project.house_type_ids"></app-houses-on-sale>
+  <app-houses-on-sale [house_ids]="project?.house_type_ids"></app-houses-on-sale>
   <hr>
-  <app-project-detail [detail]="project.detail" [location]="project.location"></app-project-detail>
+  <app-project-detail [detail]="project?.detail" [location]="project?.location"></app-project-detail>
+  <i class="fa fa-phone"></i> 联系电话：{{ project?.telephone }}
+</div>
+<div>
+  <button [routerLink]="['/']" class="btn btn-primary btn-block">返回首页</button>
 </div>

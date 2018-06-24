@@ -1,5 +1,7 @@
-<app-my-carousel></app-my-carousel>
-<div class="container-fluid">
+<app-my-carousel [carousels]="shown_carousels"></app-my-carousel>
+<div class="container-fluid my-3">
+  <h4>所有项目</h4>
+  <hr>
   <div class="row" *ngFor="let project of projects">
     <div class="col-8 my-2 mx-auto">
       <app-project-thumb [project]="project"></app-project-thumb>

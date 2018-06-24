@@ -17,6 +17,9 @@ export class HousesOnSaleComponent implements OnChanges {
   ) { }
 
   ngOnChanges() {
+    if (!this.house_ids) {
+      return;
+    }
     for (let i = 0; i < this.house_ids.length; i++) {
       this.houseService.getOneById(this.house_ids[i])
         .subscribe(house => {

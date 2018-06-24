@@ -1,0 +1,26 @@
+
+<div class="container-fluid">
+  <h3>当前首页显示的轮播图</h3>
+  <div class="row">
+    <div *ngFor="let project of shown_projects" class="col-md-4">
+      <div class="card">
+        <img [src]="project.carousels[0].url" width="100%" alt="" class="card-img-top">
+        <div class="card-body">
+          <button (click)="unshowCarousel(project)" class="btn btn-warning">移除展示队列</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <h3>首页未显示的轮播图</h3>
+  <div class="row">
+    <div *ngFor="let project of unshown_projects" class="col-md-4">
+      <div class="card">
+        <img [src]="project.carousels[0].url" width="100%" alt="" class="card-img-top">
+        <div class="card-body">
+          <button (click)="showCarousel(project)" class="btn btn-primary">加入展示队列</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

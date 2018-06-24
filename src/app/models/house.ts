@@ -1,3 +1,4 @@
+import { Carousel } from './carousel';
 export interface House {
   name: string;
   size: string;
@@ -10,4 +11,5 @@ export interface House {
   decoration: string;
   house_type_id: string;
   project_id: string;
+  carousels: Carousel[];
 }

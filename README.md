@@ -91,6 +91,7 @@ GET /api/projects
     "detail": "<p>Detail matters.</p>",
     "location": "113.223,123.9",
     "telephone": "15012312312",
+    "is_show": false
   },
   {
     "project_id": "13kmmkmkankasd",

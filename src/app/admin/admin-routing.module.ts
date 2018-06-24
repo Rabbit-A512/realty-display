@@ -1,3 +1,5 @@
+import { HomeCarouselComponent } from './home-carousel/home-carousel.component';
+import { HouseCarouselComponent } from './house-carousel/house-carousel.component';
 import { ReadHouseComponent } from './read-house/read-house.component';
 import { UpdateProjectComponent } from './update-project/update-project.component';
 import { ReadProjectComponent } from './read-project/read-project.component';
@@ -11,6 +13,7 @@ import { ManageProjectsComponent } from './manage-projects/manage-projects.compo
 import { NewProjectComponent } from './new-project/new-project.component';
 import { NewHouseComponent } from './new-house/new-house.component';
 import { UpdateHouseComponent } from './update-house/update-house.component';
+import { ProjectCarouselComponent } from './project-carousel/project-carousel.component';
 
 const adminRoutes: Routes = [
   {
@@ -59,8 +62,27 @@ const adminRoutes: Routes = [
         ]
       },
       {
-        path: 'manage-carousel',
-        component: ManageCarouselComponent
+        path: 'manage-carousels',
+        component: ManageCarouselComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: '/admin/manage-carousels/home',
+            pathMatch: 'full'
+          },
+          {
+            path: 'projects/:project_id',
+            component: ProjectCarouselComponent
+          },
+          {
+            path: 'houses/:house_type_id',
+            component: HouseCarouselComponent
+          },
+          {
+            path: 'home',
+            component: HomeCarouselComponent
+          }
+        ]
       }
     ]
   }
