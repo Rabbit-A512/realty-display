@@ -1,3 +1,4 @@
+import { House } from './../models/house';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class HouseDetailComponent implements OnInit {
 
-  @Input() house: any;
+  @Input() house: House;
 
   constructor() { }
 

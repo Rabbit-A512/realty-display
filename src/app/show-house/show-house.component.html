@@ -2,7 +2,7 @@
 <div class="p-3">
     <app-house-info [house]="house"></app-house-info>
     <hr>
-    <app-house-detail></app-house-detail>
+    <app-house-detail [house]="house"></app-house-detail>
     <hr>
     <app-reason [reason]="house?.reason"></app-reason>
     <i class="fa fa-phone"></i> 联系电话: {{ house?.telephone }}

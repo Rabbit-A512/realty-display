@@ -12,4 +12,11 @@
       <span class="text-muted smaller">{{ house?.size }}</span>
     </div>
   </div>
+  <div class="row">
+      <div *ngIf="house?.tags">
+        <span *ngFor="let tag of house.tags">
+          <app-tag [name]=tag></app-tag>
+        </span>
+      </div>
+  </div>
 </div>
