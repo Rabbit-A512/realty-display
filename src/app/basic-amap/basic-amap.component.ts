@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BasicAmapComponent implements OnInit {
 
-  center = [102.706959, 25.043652];
   @Input() marker_position = [];
 
   constructor() { }
