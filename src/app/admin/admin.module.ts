@@ -1,9 +1,12 @@
+import { SharedModule } from 'shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
+import { NgxAmapModule } from 'ngx-amap';
 import { QuillModule } from 'ngx-quill';
+import { ShowAmapComponent } from './show-amap/show-amap.component';
 
 import { HouseService } from './../services/house.service';
 import { ProjectService } from './../services/project.service';
@@ -33,7 +36,10 @@ import { UpdateProjectComponent } from './update-project/update-project.componen
     NgbModule,
     ReactiveFormsModule,
     QuillModule,
-    FileUploadModule
+    FileUploadModule,
+    NgxAmapModule.forRoot({
+      apiKey: '1ee4d9125af0e866f26959c50a42fc9c'
+    })
   ],
   declarations: [
     AdminHomeComponent,
@@ -53,7 +59,8 @@ import { UpdateProjectComponent } from './update-project/update-project.componen
     ProjectCarouselComponent,
     HouseCarouselComponent,
     HomeCarouselComponent,
-  ],
+    ShowAmapComponent
+],
   exports: [
     AdminHomeComponent
   ],

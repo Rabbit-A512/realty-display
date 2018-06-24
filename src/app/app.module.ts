@@ -20,6 +20,8 @@ import { ReasonComponent } from './reason/reason.component';
 import { ShowHouseComponent } from './show-house/show-house.component';
 import { ShowProjectComponent } from './show-project/show-project.component';
 import { TagComponent } from './tag/tag.component';
+import { BasicAmapComponent } from './basic-amap/basic-amap.component';
+import { NgxAmapModule } from 'ngx-amap';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { TagComponent } from './tag/tag.component';
     ProjectThumbComponent,
     HouseInfoComponent,
     HouseDetailComponent,
+    BasicAmapComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,10 @@ import { TagComponent } from './tag/tag.component';
     FormsModule,
     AppRoutingModule,
     AdminModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    NgxAmapModule.forRoot({
+      apiKey: '1ee4d9125af0e866f26959c50a42fc9c'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

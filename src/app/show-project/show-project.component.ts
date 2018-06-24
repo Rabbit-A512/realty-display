@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class ShowProjectComponent implements OnInit {
 
   project: Project;
+  location = [0, 0];
 
   constructor(
     private projectService: ProjectService,
@@ -23,6 +24,7 @@ export class ShowProjectComponent implements OnInit {
         this.projectService.getOneById(params.get('project_id'))
           .subscribe(project => {
             this.project = project as Project;
+            this.location = this.project.location.split(',').map(v => +v);
           });
       });
   }

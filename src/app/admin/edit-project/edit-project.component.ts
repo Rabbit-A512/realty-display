@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProjectService } from '../../services/project.service';
+import { MarkerPostionChangeEventArgs } from '../show-amap/show-amap.component';
 
 @Component({
   selector: 'app-edit-project',
@@ -14,6 +15,7 @@ export class EditProjectComponent implements OnInit, OnChanges {
 
   @Input() project: Project;
   form: FormGroup;
+  location = [0, 0];
 
   constructor(
     private fb: FormBuilder,
@@ -52,6 +54,8 @@ export class EditProjectComponent implements OnInit, OnChanges {
     this.form.get('detail').setValue(this.project.detail);
     this.form.get('reason').setValue(this.project.reason);
     this.form.get('telephone').setValue(this.project.telephone);
+
+    this.location = this.project.location.split(',').map(v => +v);
   }
 
   newProject(value) {
@@ -71,6 +75,10 @@ export class EditProjectComponent implements OnInit, OnChanges {
 
   onTagChange(args: TagChangeEventArgs) {
     this.form.get('tags').setValue(args.tags_string);
+  }
+
+  updateLocation(args: MarkerPostionChangeEventArgs) {
+    this.form.get('location').setValue(args.location);
   }
 
 }

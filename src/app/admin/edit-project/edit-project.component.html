@@ -127,15 +127,7 @@
       <div class="col">
         <hr>
         <h4>选择坐标</h4>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">高德坐标</span>
-          </div>
-          <input
-            formControlName="location"
-            class="form-control"
-            type="text">
-        </div>
+        <app-show-amap [marker_position]="location" (marker_position_change)="updateLocation($event)"></app-show-amap>
       </div>
     </div>
 
