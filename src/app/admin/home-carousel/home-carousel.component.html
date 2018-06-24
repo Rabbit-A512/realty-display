@@ -6,6 +6,7 @@
       <div class="card">
         <img [src]="project.carousels[0].url" width="100%" alt="" class="card-img-top">
         <div class="card-body">
+          <p class="card-text">{{ project.name }}</p>
           <button (click)="unshowCarousel(project)" class="btn btn-warning">移除展示队列</button>
         </div>
       </div>
