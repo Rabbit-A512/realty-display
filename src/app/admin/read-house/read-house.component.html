@@ -4,22 +4,31 @@
   <i class="fa fa-plus"></i>
 </button>
 
-<ul class="list-group my-2">
-  <li class="list-group-item" *ngFor="let house of houses">
-    <div class="media">
-      <img src="../../../assets/images/avatar.png" alt="" class="mr-3" width="50px">
-      <div class="media-body">
-        <h5 class="mt-0">{{ house.name }}</h5>
+<table class="table my-2">
+  <thead class="thead-light">
+    <tr>
+      <th>封面图</th>
+      <th>名称</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let house of houses">
+      <td>
+        <img [src]="house.carousels[0].url" alt="户型封面" width="70px">
+      </td>
+      <td>{{ house.name }}</td>
+      <td>
         <button
           [routerLink]="['/admin/manage-houses/update', house.house_type_id]"
-          class="btn btn-primary btn-sm mr-1">更新</button>
-        <button
-          (click)="open(delete)"
-          class="btn btn-danger btn-sm mr-1">删除</button>
+          class="btn btn-primary btn-sm mr-1">更新户型</button>
         <button
           [routerLink]="['/admin/manage-carousels/houses', house.house_type_id]"
-          class="btn btn-secondary btn-sm">封面图管理</button>
-      </div>
+          class="btn btn-warning btn-sm mr-1">封面图管理</button>
+        <button
+          (click)="open(delete)"
+          class="btn btn-danger btn-sm mr-1">删除户型</button>
+      </td>
 
       <ng-template #delete let-c="close" let-d="dismiss">
         <div class="modal-header">
@@ -37,6 +46,43 @@
         </div>
       </ng-template>
 
-    </div>
-  </li>
-</ul>
+    </tr>
+  </tbody>
+</table>
+
+<!--<ul class="list-group my-2">-->
+  <!--<li class="list-group-item" *ngFor="let house of houses">-->
+    <!--<div class="media">-->
+      <!--<img src="../../../assets/images/avatar.png" alt="" class="mr-3" width="50px">-->
+      <!--<div class="media-body">-->
+        <!--<h5 class="mt-0">{{ house.name }}</h5>-->
+        <!--<button-->
+          <!--[routerLink]="['/admin/manage-houses/update', house.house_type_id]"-->
+          <!--class="btn btn-primary btn-sm mr-1">更新</button>-->
+        <!--<button-->
+          <!--(click)="open(delete)"-->
+          <!--class="btn btn-danger btn-sm mr-1">删除</button>-->
+        <!--<button-->
+          <!--[routerLink]="['/admin/manage-carousels/houses', house.house_type_id]"-->
+          <!--class="btn btn-secondary btn-sm">封面图管理</button>-->
+      <!--</div>-->
+
+      <!--<ng-template #delete let-c="close" let-d="dismiss">-->
+        <!--<div class="modal-header">-->
+          <!--<h4 class="modal-title text-danger">危险操作</h4>-->
+          <!--<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">-->
+            <!--<span aria-hidden="true">&times;</span>-->
+          <!--</button>-->
+        <!--</div>-->
+        <!--<div class="modal-body">-->
+          <!--<p class="text-danger">删除户型将会删除与其相关的所有数据，请慎重！</p>-->
+        <!--</div>-->
+        <!--<div class="modal-footer">-->
+          <!--<button class="btn btn-outline-dark" (click)="delete_house(house.house_type_id)">仍要删除</button>-->
+          <!--<button class="btn btn-outline-dark" (click)="c('Cross click')">取消</button>-->
+        <!--</div>-->
+      <!--</ng-template>-->
+
+    <!--</div>-->
+  <!--</li>-->
+<!--</ul>-->

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 import { ProjectService } from '../../services/project.service';
+import { Project } from '../../models/project';
 
 @Component({
   selector: 'app-read-project',
@@ -10,7 +11,7 @@ import { ProjectService } from '../../services/project.service';
   styleUrls: ['./read-project.component.css']
 })
 export class ReadProjectComponent implements OnInit {
-  projects = [];
+  projects: Project[];
   modal: NgbModalRef;
 
   constructor(

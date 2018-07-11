@@ -4,6 +4,7 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 import { HouseService } from '../../services/house.service';
 import { ProjectService } from './../../services/project.service';
+import { House } from '../../models/house';
 
 @Component({
   selector: 'app-read-house',
@@ -11,7 +12,7 @@ import { ProjectService } from './../../services/project.service';
   styleUrls: ['./read-house.component.css']
 })
 export class ReadHouseComponent implements OnInit {
-  houses = [];
+  houses: House[] = [];
   house_ids: string[];
   project_id = '';
   project_name = '';
@@ -36,7 +37,7 @@ export class ReadHouseComponent implements OnInit {
             for (let i = 0; i < project['house_type_ids'].length; i++) {
               this.houseService.getOneById(project['house_type_ids'][i])
                 .subscribe(house => {
-                  this.houses.push(house);
+                  this.houses.push(house as House);
                 });
             }
           });
