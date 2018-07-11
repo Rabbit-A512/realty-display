@@ -14,6 +14,8 @@ import { NewProjectComponent } from './new-project/new-project.component';
 import { NewHouseComponent } from './new-house/new-house.component';
 import { UpdateHouseComponent } from './update-house/update-house.component';
 import { ProjectCarouselComponent } from './project-carousel/project-carousel.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from '../services/auth.guard';
 
 const adminRoutes: Routes = [
   {
@@ -21,8 +23,13 @@ const adminRoutes: Routes = [
     component: AdminHomeComponent,
     children: [
       {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
         path: 'manage-projects',
         component: ManageProjectsComponent,
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
@@ -46,6 +53,7 @@ const adminRoutes: Routes = [
       {
         path: 'manage-houses',
         component: ManageHousesComponent,
+        canActivate: [AuthGuard],
         children: [
           {
             path: 'new/:project_id',
@@ -64,6 +72,7 @@ const adminRoutes: Routes = [
       {
         path: 'manage-carousels',
         component: ManageCarouselComponent,
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',

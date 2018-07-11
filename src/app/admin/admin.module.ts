@@ -1,6 +1,6 @@
 import { SharedModule } from 'shared/shared.module';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
@@ -28,6 +28,7 @@ import { SearchComponent } from './search/search.component';
 import { TagEditorComponent } from './tag-editor/tag-editor.component';
 import { UpdateHouseComponent } from './update-house/update-house.component';
 import { UpdateProjectComponent } from './update-project/update-project.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -59,7 +60,8 @@ import { UpdateProjectComponent } from './update-project/update-project.componen
     ProjectCarouselComponent,
     HouseCarouselComponent,
     HomeCarouselComponent,
-    ShowAmapComponent
+    ShowAmapComponent,
+    LoginComponent
 ],
   exports: [
     AdminHomeComponent

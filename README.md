@@ -519,7 +519,8 @@ req:
 
 ```json
 {
-  "password": "newPassword"
+  "old_password": "password1",
+  "new_password": "password2"
 }
 ```
 

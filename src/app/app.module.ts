@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -22,6 +22,7 @@ import { ShowProjectComponent } from './show-project/show-project.component';
 import { TagComponent } from './tag/tag.component';
 import { BasicAmapComponent } from './basic-amap/basic-amap.component';
 import { NgxAmapModule } from 'ngx-amap';
+import { AppErrorHandler } from './services/errors/app-error-handler';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,12 @@ import { NgxAmapModule } from 'ngx-amap';
       apiKey: '1ee4d9125af0e866f26959c50a42fc9c'
     })
   ],
-  providers: [],
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: AppErrorHandler
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
