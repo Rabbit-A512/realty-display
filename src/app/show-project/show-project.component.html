@@ -9,6 +9,49 @@
   <app-project-detail [detail]="project?.detail" [location]="location"></app-project-detail>
   <hr>
 </div>
-<div>
-  <button [routerLink]="['/']" class="btn btn-primary btn-block">返回首页</button>
+<div class="btn-group ml-auto" role="group">
+  <button [routerLink]="['/']" class="btn btn-warning">返回首页</button>
+  <button (click)="open(message)" class="btn btn-primary">留言</button>
 </div>
+
+<ng-template #message let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">给该项目留言</h4>
+    <button type="button" class="close" (click)="d('Cross click')">
+      <span>&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="form">
+      <div class="form-group">
+        <label for="content">内容：</label>
+        <textarea
+          formControlName="content"
+          class="form-control"
+          id="content"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="phone">电话号码：</label>
+        <input
+          id="phone"
+          formControlName="phone"
+          type="tel"
+          class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="call">称呼：</label>
+        <input
+          formControlName="call"
+          class="form-control"
+          id="call"
+          aria-describedby="help"
+          type="text">
+        <small id="help" class="form-text text-muted">希望工作人员怎么称呼您</small>
+      </div>
+    </form>
+    <p>{{ form.value | json }}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="submitMessage(form.value)">提交</button>
+  </div>
+</ng-template>

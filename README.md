@@ -77,6 +77,11 @@ GET /api/projects
 [
   {
     "project_id": "13kmmkmkankasd",
+    "message_ids": [
+      "uuid1",
+      "uuid2",
+      "uuid3"
+    ],
     "carousels": [
       {
         "image_id": "uuid",
@@ -106,6 +111,11 @@ GET /api/projects
   },
   {
     "project_id": "13kmmkmkankasd",
+    "message_ids": [
+          "uuid1",
+          "uuid2",
+          "uuid3"
+        ],
     "carousels": [
       {
         "image_id": "uuid",
@@ -157,6 +167,11 @@ GET /api/projects/:id
       "url": "url1"
     }
   ],
+  "message_ids": [
+        "uuid1",
+        "uuid2",
+        "uuid3"
+      ],
   "name": "万科麓山",
   "size": "125",
   "price": "59000",
@@ -471,5 +486,144 @@ DELETE /api/carousels/:project_id
 ```json
 {
   "success": true
+}
+```
+
+### 登录
+
+x-auth-token: "jwt"
+
+POST /api/login
+
+req:
+
+```json
+{
+  "password": "secret"
+}
+```
+
+res:
+
+```json
+{
+  "token": "jwt"
+}
+```
+
+### 修改密码
+
+PUT /api/password
+
+req:
+
+```json
+{
+  "password": "newPassword"
+}
+```
+
+res:
+
+```json
+{
+  "success": true
+}
+```
+
+### Message
+
+POST /api/messages
+
+req:
+
+```json
+{
+  "project_id": "uuid",
+  "content": "asd",
+  "phone": "15087186168",
+  "call": "Mr. Wang"
+}
+```
+
+res:
+
+```json
+{
+  "message_id": "uuid",
+  "project_id": "uuid",
+  "content": "asd",
+  "phone": "15087186168",
+  "call": "Mr. Wang",
+  "time": "timestamp",
+  "is_read": false
+}
+```
+
+DELETE /api/messages/:message_id
+
+res:
+
+```json
+{
+  "message_id": "uuid",
+  "project_id": "uuid",
+  "content": "asd",
+  "phone": "15087186168",
+  "call": "Mr. Wang",
+  "time": "timestamp",
+  "is_read": false
+}
+```
+
+GET /api/messages
+
+res:
+
+```json
+[
+  {
+    "message_id": "uuid",
+    "project_id": "uuid",
+    "content": "asd",
+    "phone": "15087186168",
+    "call": "Mr. Wang",
+    "time": "timestamp",
+    "is_read": false
+  },
+  {
+    "message_id": "uuid",
+    "project_id": "uuid",
+    "content": "asd",
+    "phone": "15087186168",
+    "call": "Mr. Wang",
+    "time": "timestamp",
+    "is_read": false
+  },
+  {
+    "message_id": "uuid",
+    "project_id": "uuid",
+    "content": "asd",
+    "phone": "15087186168",
+    "call": "Mr. Wang",
+    "time": "timestamp",
+    "is_read": false
+  }
+]
+```
+
+GET /api/messages/:message_id
+
+res:
+
+```json
+{
+  "message_id": "uuid",
+  "project_id": "uuid",
+  "content": "asd",
+  "phone": "15087186168",
+  "call": "Mr. Wang",
+  "time": "timestamp",
+  "is_read": false
 }
 ```
