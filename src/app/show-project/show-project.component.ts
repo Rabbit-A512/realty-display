@@ -4,6 +4,7 @@ import { ProjectService } from './../services/project.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-show-project',
@@ -18,6 +19,7 @@ export class ShowProjectComponent implements OnInit {
 
   constructor(
     private projectService: ProjectService,
+    private messageService: MessageService,
     private route: ActivatedRoute,
     private fb: FormBuilder,
     private modalService: NgbModal
@@ -44,7 +46,13 @@ export class ShowProjectComponent implements OnInit {
     this.modalService.open(content, { centered: true });
   }
 
-  submitMessage() {
+  submitMessage(value, messageModal: NgbModalRef) {
+    value['project_id'] = this.project.project_id;
+    this.messageService.create(value)
+      .subscribe(createdMessage => {
+        console.log(createdMessage);
+        messageModal.close();
+      });
   }
 
 }

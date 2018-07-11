@@ -13,5 +13,6 @@ export interface Project {
   location: string;
   telephone: string;
   house_type_ids: string[];
+  message_ids: string[];
   carousels: Carousel[];
 }

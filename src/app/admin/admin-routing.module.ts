@@ -16,6 +16,10 @@ import { UpdateHouseComponent } from './update-house/update-house.component';
 import { ProjectCarouselComponent } from './project-carousel/project-carousel.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from '../services/auth.guard';
+import { ManageMessagesComponent } from './manage-messages/manage-messages.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AllMessagesComponent } from './all-messages/all-messages.component';
+import { SomeMessagesComponent } from './some-messages/some-messages.component';
 
 const adminRoutes: Routes = [
   {
@@ -25,6 +29,30 @@ const adminRoutes: Routes = [
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent,
+        // canActivate: [AuthGuard]
+      },
+      {
+        path: 'manage-messages',
+        component: ManageMessagesComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: '/admin/manage-messages/all',
+            pathMatch: 'full'
+          },
+          {
+            path: 'all',
+            component: AllMessagesComponent
+          },
+          {
+            path: 'some/:project_id',
+            component: SomeMessagesComponent
+          }
+        ]
       },
       {
         path: 'manage-projects',

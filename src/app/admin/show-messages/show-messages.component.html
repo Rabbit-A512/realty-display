@@ -1,0 +1,20 @@
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>项目名称</th>
+      <th>留言内容</th>
+      <th>电话号码</th>
+      <th>留言时间</th>
+      <th>联系人称呼</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let message of messages">
+      <td>{{message.project_id}}</td>
+      <td>{{message.content}}</td>
+      <td>{{message.phone}}</td>
+      <td>{{message.time | date}}</td>
+      <td>{{message.call}}</td>
+    </tr>
+  </tbody>
+</table>

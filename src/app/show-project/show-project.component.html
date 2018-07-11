@@ -49,9 +49,8 @@
         <small id="help" class="form-text text-muted">希望工作人员怎么称呼您</small>
       </div>
     </form>
-    <p>{{ form.value | json }}</p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="submitMessage(form.value)">提交</button>
+    <button type="button" class="btn btn-outline-dark" (click)="submitMessage(form.value, message)">提交</button>
   </div>
 </ng-template>
