@@ -1,10 +1,10 @@
 <div class="container-fluid">
   <div class="row">
-    <span>户型</span>
+    <h4><span class="badge badge-info">可选户型</span></h4>
   </div>
   <div class="row">
-      <div *ngFor="let house of houses" class="col-6 p-0">
-        <app-house-thumb [house]="house"></app-house-thumb>
-      </div>
+    <div *ngFor="let house of houses" class="col-6 p-0">
+      <app-house-thumb [house]="house"></app-house-thumb>
+    </div>
   </div>
 </div>
