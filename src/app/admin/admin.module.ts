@@ -29,6 +29,11 @@ import { TagEditorComponent } from './tag-editor/tag-editor.component';
 import { UpdateHouseComponent } from './update-house/update-house.component';
 import { UpdateProjectComponent } from './update-project/update-project.component';
 import { LoginComponent } from './login/login.component';
+import { ManageMessagesComponent } from './manage-messages/manage-messages.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AllMessagesComponent } from './all-messages/all-messages.component';
+import { SomeMessagesComponent } from './some-messages/some-messages.component';
+import { ShowMessagesComponent } from './show-messages/show-messages.component';
 
 @NgModule({
   imports: [
@@ -61,7 +66,12 @@ import { LoginComponent } from './login/login.component';
     HouseCarouselComponent,
     HomeCarouselComponent,
     ShowAmapComponent,
-    LoginComponent
+    LoginComponent,
+    ManageMessagesComponent,
+    ChangePasswordComponent,
+    AllMessagesComponent,
+    SomeMessagesComponent,
+    ShowMessagesComponent
 ],
   exports: [
     AdminHomeComponent

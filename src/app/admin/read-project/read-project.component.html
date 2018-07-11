@@ -24,7 +24,7 @@
           [routerLink]="['/admin/manage-houses/read', project.project_id]"
           class="btn btn-outline-primary btn-sm ml-1">管理</button>
       </td>
-      <td>0
+      <td>{{ project.message_ids.length }}
         <button class="btn btn-outline-primary btn-sm ml-1">查看</button>
       </td>
       <td>

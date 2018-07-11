@@ -1,4 +1,5 @@
 export interface Message {
+  project_id: string;
   content: string;
   phone: string;
   call: string;

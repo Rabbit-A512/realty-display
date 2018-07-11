@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -13,6 +13,11 @@ import { BadInput } from './errors/bad-input';
 export class AuthService {
   private login_url = 'http://120.78.187.115:5000/api/login';
   private change_password_url = 'http://120.78.187.115:5000/api/password';
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+    })
+  };
 
   constructor(
     private http: HttpClient,
@@ -30,6 +35,13 @@ export class AuthService {
           }
           return false;
         }),
+        catchError(this.handleError)
+      );
+  }
+
+  changePassword(passwords) {
+    return this.http.put(this.change_password_url, passwords, this.httpOptions)
+      .pipe(
         catchError(this.handleError)
       );
   }
