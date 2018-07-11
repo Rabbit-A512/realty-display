@@ -1,8 +1,9 @@
-<app-search></app-search>
+<!--<app-search></app-search>-->
 <button class="btn btn-outline-success" routerLink='/admin/manage-projects/new'>
   <span>新建项目</span>
   <i class="fa fa-plus"></i>
 </button>
+
 <ul class="list-group my-2">
   <li class="list-group-item" *ngFor="let project of projects">
     <div class="media">
@@ -20,7 +21,7 @@
           class="btn btn-secondary btn-sm mr-1">户型管理</button>
         <button
           [routerLink]="['/admin/manage-carousels/projects', project.project_id]"
-          class="btn btn-secondary btn-sm">轮播图管理</button>
+          class="btn btn-secondary btn-sm">封面图管理</button>
 
       </div>
 

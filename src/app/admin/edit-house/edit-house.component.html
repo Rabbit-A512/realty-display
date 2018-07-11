@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <h2 *ngIf="!house">新建户型</h2>
-  <h2 *ngIf="house">更新户型</h2>
+  <h2 *ngIf="house">更新户型：{{ house.name }}</h2>
 
   <div class="form-row my-3">
     <div class="col">

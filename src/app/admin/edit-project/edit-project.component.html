@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <h2 *ngIf="!project">新建项目</h2>
-  <h2 *ngIf="project">更新项目</h2>
+  <h2 *ngIf="project">更新项目：{{ project.name }}</h2>
 
   <div class="form-row my-3">
     <div class="col">
@@ -76,7 +76,6 @@
           <input
             class="form-control"
             formControlName="follow_amount"
-            readonly
             type="number">
         </div>
       </div>
