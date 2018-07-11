@@ -2,6 +2,8 @@ import { Project } from './../models/project';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from './../services/project.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-show-project',
@@ -12,10 +14,13 @@ export class ShowProjectComponent implements OnInit {
 
   project: Project;
   location = [0, 0];
+  form: FormGroup;
 
   constructor(
     private projectService: ProjectService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -27,6 +32,19 @@ export class ShowProjectComponent implements OnInit {
             this.location = this.project.location.split(',').map(v => +v);
           });
       });
+
+    this.form = this.fb.group({
+      content: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      call: ['', [Validators.required]]
+    });
+  }
+
+  open(content: NgbModalRef) {
+    this.modalService.open(content, { centered: true });
+  }
+
+  submitMessage() {
   }
 
 }
