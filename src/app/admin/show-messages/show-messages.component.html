@@ -6,15 +6,37 @@
       <th>电话号码</th>
       <th>留言时间</th>
       <th>联系人称呼</th>
+      <th>操作</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let message of messages">
-      <td>{{message.project_id}}</td>
+      <td>{{message.project_name}}</td>
       <td>{{message.content}}</td>
       <td>{{message.phone}}</td>
       <td>{{message.time | date}}</td>
       <td>{{message.call}}</td>
+      <td>
+        <button
+          (click)="open(delete)"
+          class="btn btn-danger btn-sm">刪除</button>
+      </td>
+
+      <ng-template #delete let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title text-danger">危险操作</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="text-danger">删除留言操作不可撤銷，请慎重！</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-dark" (click)="delete_message(message.message_id)">仍要删除</button>
+          <button class="btn btn-outline-dark" (click)="c('Cross click')">取消</button>
+        </div>
+      </ng-template>
     </tr>
   </tbody>
 </table>

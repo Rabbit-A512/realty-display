@@ -7,4 +7,5 @@ export interface Message {
   message_id?: string;
   time?: string;
   is_read?: boolean;
+  project_name?: string;
 }

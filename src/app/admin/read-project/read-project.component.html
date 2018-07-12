@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let project of projects">
-      <td><img [src]="project.carousels[0].url" alt="项目封面图" width="70px"></td>
+      <td><img [src]="project.carousels[0]?.url" alt="项目封面图" width="70px"></td>
       <td>{{ project.name }}</td>
       <td>{{ project.house_type_ids.length }}
         <button
@@ -25,7 +25,9 @@
           class="btn btn-outline-primary btn-sm ml-1">管理</button>
       </td>
       <td>{{ project.message_ids.length }}
-        <button class="btn btn-outline-primary btn-sm ml-1">查看</button>
+        <button
+          [routerLink]="['/admin/manage-messages/some', project.project_id]"
+          class="btn btn-outline-primary btn-sm ml-1">查看</button>
       </td>
       <td>
         <button

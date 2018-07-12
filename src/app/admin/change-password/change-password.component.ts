@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth.service';
 import { AppError } from '../../services/errors/app-error';
 import { BadInput } from '../../services/errors/bad-input';
 import { Router } from '@angular/router';
+import { Unauthorized } from '../../services/errors/unauthorized';
 
 @Component({
   selector: 'app-change-password',
@@ -48,8 +49,12 @@ export class ChangePasswordComponent implements OnInit {
         this.authService.logout();
         this.router.navigate(['/admin/login']);
       }, (error: AppError) => {
-        if (error instanceof BadInput) {
+        if (error instanceof Unauthorized) {
+          this.router.navigate(['/admin/login']);
+        } else if (error instanceof BadInput) {
           this.form.setErrors({ invalidOldPassword: true });
+        } else {
+          throw error;
         }
       });
   }

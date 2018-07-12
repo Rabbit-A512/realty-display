@@ -16,7 +16,10 @@ export class ProjectService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) { }
 
   private handleError(error) {
     if (error.status === 401) {

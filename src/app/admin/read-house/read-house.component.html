@@ -15,7 +15,7 @@
   <tbody>
     <tr *ngFor="let house of houses">
       <td>
-        <img [src]="house.carousels[0].url" alt="户型封面" width="70px">
+        <img [src]="house.carousels[0]?.url" alt="户型封面" width="70px">
       </td>
       <td>{{ house.name }}</td>
       <td>

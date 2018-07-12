@@ -27,7 +27,7 @@
       <tr *ngFor="let project of unshown_projects">
         <td>{{ project.name }}</td>
         <td>
-          <img [src]="project.carousels[0].url" alt="项目封面" width="200px">
+          <img [src]="project.carousels[0]?.url" alt="项目封面" width="200px">
         </td>
         <td>
           <button

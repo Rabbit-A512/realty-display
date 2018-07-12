@@ -1,7 +1,7 @@
 
 <ngb-carousel>
   <ng-template *ngFor="let carousel of carousels" ngbSlide>
-    <img *ngIf="!carousel.project_id" [src]="carousel.url" alt="" width="100%">
+    <img *ngIf="!carousel.project_id" [src]="carousel.url" alt="戶型封面" width="100%">
     <a *ngIf="carousel.project_id" [routerLink]="['/project', carousel.project_id]">
       <img [src]="carousel.url" alt="" width="100%">
     </a>
