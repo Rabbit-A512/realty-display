@@ -5,6 +5,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProjectService } from '../../services/project.service';
 import { MarkerPostionChangeEventArgs } from '../show-amap/show-amap.component';
+import { Unauthorized } from '../../services/errors/unauthorized';
 
 @Component({
   selector: 'app-edit-project',
@@ -62,6 +63,12 @@ export class EditProjectComponent implements OnInit, OnChanges {
     this.projectService.create(value)
       .subscribe(async new_project => {
         await this.router.navigate(['/admin/manage-projects/read']);
+      }, error => {
+        if (error instanceof Unauthorized) {
+          this.router.navigate(['/admin/login']);
+        } else {
+          throw error;
+        }
       });
   }
 
@@ -70,6 +77,12 @@ export class EditProjectComponent implements OnInit, OnChanges {
     this.projectService.update(value)
       .subscribe(async updated_project => {
         await this.router.navigate(['/admin/manage-projects/read']);
+      }, error => {
+        if (error instanceof Unauthorized) {
+          this.router.navigate(['/admin/login']);
+        } else {
+          throw error;
+        }
       });
   }
 

@@ -6,6 +6,7 @@ import { throwError } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AppError } from './errors/app-error';
 import { BadInput } from './errors/bad-input';
+import { Unauthorized } from './errors/unauthorized';
 
 @Injectable({
   providedIn: 'root'
@@ -64,8 +65,11 @@ export class AuthService {
   }
 
   private handleError(error) {
+    console.log(error);
     if (error.status === 400) {
       return throwError(new BadInput(error));
+    } else if (error.status === 401) {
+      return throwError(new Unauthorized(error));
     }
     return throwError(new AppError(error));
   }

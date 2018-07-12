@@ -5,6 +5,7 @@ import { Unauthorized } from './errors/unauthorized';
 import { throwError } from 'rxjs';
 import { AppError } from './errors/app-error';
 import { catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,16 @@ export class HouseService {
     })
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) { }
 
   private handleError(error) {
     if (error.status === 401) {
-      return throwError(new Unauthorized(error));
+      this.router.navigate(['/admin/login']);
+      return;
+      // return throwError(new Unauthorized(error));
     } else {
       return throwError(new AppError(error));
     }

@@ -1,6 +1,6 @@
 <div class="card">
   <a [routerLink]="['/project', project.project_id]">
-    <img [src]="project.carousels[0].url" alt="" class="card-img-top">
+    <img [src]="project?.carousels[0]?.url" alt="項目封面" class="card-img-top">
   </a>
   <div class="card-body bg-light">
     <h5>{{ project.name }}</h5>

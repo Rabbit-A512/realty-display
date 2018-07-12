@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { BadInput } from '../../services/errors/bad-input';
 
 @Component({
   selector: 'app-login',
@@ -31,6 +32,12 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/admin/manage-projects']);
         } else {
           this.errorMessage = '密码错误';
+        }
+      }, error => {
+        if (error instanceof BadInput) {
+          this.errorMessage = '密码错误';
+        } else {
+          throw error;
         }
       });
   }

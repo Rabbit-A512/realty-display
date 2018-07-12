@@ -26,9 +26,12 @@
       <div class="form-group">
         <label for="content">内容：</label>
         <textarea
+          placeholder="留言长度不能超过100"
           formControlName="content"
           class="form-control"
           id="content"></textarea>
+        <p *ngIf="content.touched && content.hasError('maxlength')" class="alert alert-danger">留言长度不能超过100</p>
+        <p *ngIf="content.touched && content.hasError('required')" class="alert alert-danger">留言不能为空</p>
       </div>
       <div class="form-group">
         <label for="phone">电话号码：</label>
@@ -51,6 +54,10 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="submitMessage(form.value, message)">提交</button>
+    <button
+      [disabled]="form.invalid"
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="submitMessage(form.value)">提交</button>
   </div>
 </ng-template>

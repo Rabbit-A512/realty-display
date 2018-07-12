@@ -16,6 +16,7 @@ export class ShowProjectComponent implements OnInit {
   project: Project;
   location = [0, 0];
   form: FormGroup;
+  messageModal: NgbModalRef;
 
   constructor(
     private projectService: ProjectService,
@@ -36,23 +37,27 @@ export class ShowProjectComponent implements OnInit {
       });
 
     this.form = this.fb.group({
-      content: ['', [Validators.required]],
+      content: ['', [Validators.required, Validators.maxLength(100)]],
       phone: ['', [Validators.required]],
       call: ['', [Validators.required]]
     });
   }
 
   open(content: NgbModalRef) {
-    this.modalService.open(content, { centered: true });
+    this.messageModal = this.modalService.open(content, { centered: true });
   }
 
-  submitMessage(value, messageModal: NgbModalRef) {
+  submitMessage(value) {
     value['project_id'] = this.project.project_id;
     this.messageService.create(value)
       .subscribe(createdMessage => {
         console.log(createdMessage);
-        messageModal.close();
+        this.messageModal.close();
       });
+  }
+
+  get content() {
+    return this.form.get('content');
   }
 
 }

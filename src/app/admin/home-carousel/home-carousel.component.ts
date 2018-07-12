@@ -26,6 +26,9 @@ export class HomeCarouselComponent implements OnInit {
     this.projectService.getAll()
       .subscribe(projects => {
         for (let i = 0; i < (projects as Project[]).length; i++) {
+          if (!projects[i].carousels[0]) {
+            continue;
+          }
           if (projects[i].is_show) {
             this.shown_projects.push(projects[i]);
           } else {

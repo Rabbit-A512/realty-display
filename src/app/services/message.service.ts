@@ -5,12 +5,13 @@ import { throwError } from 'rxjs';
 import { AppError } from './errors/app-error';
 import { catchError } from 'rxjs/operators';
 import * as _ from 'lodash';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
-  private url = '120.78.187.115:5000/api/messages';
+  private url = 'http://120.78.187.115:5000/api/messages';
   private httpOptions = {
     headers: new HttpHeaders({
       'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
@@ -18,12 +19,15 @@ export class MessageService {
   };
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   private handleError(error) {
     if (error.status === 401) {
-      return throwError(new Unauthorized(error));
+      this.router.navigate(['/admin/login']);
+      return;
+      // return throwError(new Unauthorized(error));
     } else {
       return throwError(new AppError(error));
     }
