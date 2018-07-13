@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
   projects: any;
   shown_carousels: Carousel[] = [];
+  params = null;
 
   constructor(
     private projectService: ProjectService,
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit {
     this.route.queryParamMap
       .subscribe(params => {
         console.log(params);
+        this.params = params;
       });
   }
 
