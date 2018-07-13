@@ -15,10 +15,18 @@ export class AllMessagesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loadMessages();
+  }
+
+  loadMessages() {
     this.messageService.getAll()
       .subscribe(messages => {
         this.messages = messages as Message[];
       });
+  }
+
+  doMessageChange(args) {
+    this.loadMessages();
   }
 
 }

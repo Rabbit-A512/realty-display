@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Unauthorized } from './errors/unauthorized';
-import { throwError } from 'rxjs';
+import { pipe, throwError } from 'rxjs';
 import { AppError } from './errors/app-error';
 import { catchError } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { Router } from '@angular/router';
+import { handleServiceError } from './errors/app-error-handler';
 
 @Injectable({
   providedIn: 'root'
@@ -23,42 +24,38 @@ export class MessageService {
     private router: Router
   ) { }
 
-  private handleError(error) {
-    if (error.status === 401) {
-      this.router.navigate(['/admin/login']);
-      return;
-      // return throwError(new Unauthorized(error));
-    } else {
-      return throwError(new AppError(error));
-    }
-  }
-
   getAll() {
-    return this.http.get(this.url);
+    return this.http.get(this.url)
+      .pipe(
+        catchError(handleServiceError)
+      );
   }
 
   getOneById(id) {
-    return this.http.get(`${this.url}/${id}`);
+    return this.http.get(`${this.url}/${id}`)
+      .pipe(
+        catchError(handleServiceError)
+      );
   }
 
   create(message) {
     return this.http.post(this.url, message)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 
   update(message) {
     return this.http.put(`${this.url}/${message.message_id}`, _.omit(message, ['message_id']), this.httpOptions)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 
   delete(id) {
     return this.http.delete(`${this.url}/${id}`, this.httpOptions)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 

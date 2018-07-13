@@ -4,6 +4,7 @@ import { catchError, map } from 'rxjs/operators';
 import { pipe, throwError } from 'rxjs';
 import { Unauthorized } from './errors/unauthorized';
 import { AppError } from './errors/app-error';
+import { handleServiceError } from './errors/app-error-handler';
 
 @Injectable({
   providedIn: 'root'
@@ -19,45 +20,40 @@ export class CarouselService {
     })
   };
 
-  constructor(private _http: HttpClient) { }
-
-  private handleError(error) {
-    if (error.status === 401) {
-      return throwError(new Unauthorized(error));
-    } else {
-      return throwError(new AppError(error));
-    }
-  }
+  constructor(private http: HttpClient) { }
 
   deleteProjectCarousel(id: string) {
-    return this._http.delete(`${this.project_carousel_url}/${id}`, this.httpOptions)
+    return this.http.delete(`${this.project_carousel_url}/${id}`, this.httpOptions)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 
   deleteHouseCarousel(id: string) {
-    return this._http.delete(`${this.house_carousel_url}/${id}`, this.httpOptions)
+    return this.http.delete(`${this.house_carousel_url}/${id}`, this.httpOptions)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 
   showHomeCarousel(id) {
-    return this._http.post(`${this.home_carousel_url}/${id}`, {}, this.httpOptions)
+    return this.http.post(`${this.home_carousel_url}/${id}`, {}, this.httpOptions)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 
   unshowHomeCarousel(id) {
-    return this._http.delete(`${this.home_carousel_url}/${id}`, this.httpOptions)
+    return this.http.delete(`${this.home_carousel_url}/${id}`, this.httpOptions)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 
   get shownCarousels() {
-    return this._http.get(`${this.home_carousel_url}`);
+    return this.http.get(`${this.home_carousel_url}`)
+      .pipe(
+        catchError(handleServiceError)
+      );
   }
 }

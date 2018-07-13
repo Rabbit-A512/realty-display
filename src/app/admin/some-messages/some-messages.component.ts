@@ -18,7 +18,7 @@ export class SomeMessagesComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit() {
+  loadMessages() {
     this.route.paramMap
       .subscribe(params => {
         this.projectService.getOneById(params.get('project_id'))
@@ -32,6 +32,14 @@ export class SomeMessagesComponent implements OnInit {
             }
           });
       });
+  }
+
+  ngOnInit() {
+    this.loadMessages();
+  }
+
+  doMessageChange(arg) {
+    this.loadMessages();
   }
 
 }

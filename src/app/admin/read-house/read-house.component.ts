@@ -26,7 +26,7 @@ export class ReadHouseComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit() {
+  loadHouseTypes() {
     this.route.paramMap
       .subscribe(params => {
         console.log(params);
@@ -44,15 +44,19 @@ export class ReadHouseComponent implements OnInit {
       });
   }
 
+  ngOnInit() {
+    this.loadHouseTypes();
+  }
+
   open(content) {
     this.modal = this.modalService.open(content);
   }
 
   delete_house(id) {
     this.houseService.delete(id)
-      .subscribe(async deleted_house => {
+      .subscribe(deleted_house => {
         this.modal.close();
-        await this.router.navigate(['/admin/manage-projects']);
+        this.loadHouseTypes();
       });
   }
 

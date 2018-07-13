@@ -20,11 +20,15 @@ export class ReadProjectComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
+  loadProjects() {
     this.projectService.getAll()
       .subscribe(projects => {
         this.projects = projects as any;
       });
+  }
+
+  ngOnInit() {
+    this.loadProjects();
   }
 
   open(content) {
@@ -35,7 +39,7 @@ export class ReadProjectComponent implements OnInit {
     this.projectService.delete(id)
       .subscribe(async deleted_project => {
         this.modal.close();
-        await this.router.navigate(['/admin']);
+        this.loadProjects();
       });
   }
 }

@@ -1,9 +1,9 @@
-<app-my-carousel [carousels]="shown_carousels"></app-my-carousel>
+<app-my-carousel *ngIf="haveCarousels" [carousels]="shown_carousels" [isProjectCarousel]="true"></app-my-carousel>
 <div class="container-fluid my-3">
   <h4>所有项目</h4>
   <hr>
-  <div class="row" *ngFor="let project of projects">
-    <div class="col-8 my-2 mx-auto">
+  <div class="row">
+    <div class="col-6 my-2" *ngFor="let project of projects">
       <app-project-thumb [project]="project"></app-project-thumb>
     </div>
   </div>
