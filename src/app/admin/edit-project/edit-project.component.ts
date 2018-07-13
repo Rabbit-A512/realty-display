@@ -35,7 +35,7 @@ export class EditProjectComponent implements OnInit, OnChanges {
       'deal_amount': [0, [Validators.required]],
       'detail': [''],
       'reason': [''],
-      'location': ['', [Validators.required]],
+      'location': ['102.706959,25.043652', [Validators.required]],  // 昆明市中心坐标
       'telephone': ['', [Validators.required]]
     });
   }

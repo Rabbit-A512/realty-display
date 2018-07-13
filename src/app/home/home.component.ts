@@ -2,6 +2,7 @@ import { Carousel } from './../models/carousel';
 import { CarouselService } from './../services/carousel.service';
 import { ProjectService } from './../services/project.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private projectService: ProjectService,
-    private carouselService: CarouselService
+    private carouselService: CarouselService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -25,6 +27,10 @@ export class HomeComponent implements OnInit {
     this.carouselService.shownCarousels
       .subscribe(carousels => {
         this.shown_carousels = carousels as Carousel[];
+      });
+    this.route.queryParamMap
+      .subscribe(params => {
+        console.log(params);
       });
   }
 
