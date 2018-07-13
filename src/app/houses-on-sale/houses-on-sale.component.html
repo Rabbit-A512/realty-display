@@ -2,8 +2,8 @@
   <div class="row">
     <h4><span class="badge badge-info">可选户型</span></h4>
   </div>
-  <div class="row">
-    <div *ngFor="let house of houses" class="col-6 p-0">
+  <div class="row d-flex flex-nowrap">
+    <div *ngFor="let house of houses" class="col-9">
       <app-house-thumb [house]="house"></app-house-thumb>
     </div>
   </div>

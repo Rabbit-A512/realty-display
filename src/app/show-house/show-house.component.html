@@ -1,11 +1,10 @@
-<app-my-carousel [carousels]="house?.carousels"></app-my-carousel>
+<app-my-carousel [carousels]="house?.carousels" [isProjectCarousel]="false"></app-my-carousel>
 <div class="p-3">
     <app-house-info [house]="house"></app-house-info>
     <hr>
     <app-house-detail [house]="house"></app-house-detail>
     <hr>
     <app-reason [reason]="house?.reason"></app-reason>
-    <i class="fa fa-phone"></i> 联系电话: {{ house?.telephone }}
 </div>
 <div class="fixed-bottom">
   <button [routerLink]="['/']" class="btn btn-primary btn-block">返回首页</button>

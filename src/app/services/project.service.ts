@@ -6,6 +6,7 @@ import { Unauthorized } from './errors/unauthorized';
 import { throwError } from 'rxjs';
 import { AppError } from './errors/app-error';
 import { catchError } from 'rxjs/operators';
+import { handleServiceError } from './errors/app-error-handler';
 
 @Injectable()
 export class ProjectService {
@@ -18,43 +19,40 @@ export class ProjectService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
   ) { }
 
-  private handleError(error) {
-    if (error.status === 401) {
-      return throwError(new Unauthorized(error));
-    } else {
-      return throwError(new AppError(error));
-    }
-  }
-
   getAll() {
-    return this.http.get(this.url);
+    return this.http.get(this.url)
+      .pipe(
+        catchError(handleServiceError)
+      );
   }
 
   getOneById(id) {
-    return this.http.get(`${this.url}/${id}`);
+    return this.http.get(`${this.url}/${id}`)
+      .pipe(
+        catchError(handleServiceError)
+      );
   }
 
   create(project) {
     return this.http.post(this.url, project, this.httpOptions)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 
   update(project) {
     return this.http.put(`${this.url}/${project.project_id}`, _.omit(project, ['project_id']), this.httpOptions)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 
   delete(id) {
     return this.http.delete(`${this.url}/${id}`, this.httpOptions)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 

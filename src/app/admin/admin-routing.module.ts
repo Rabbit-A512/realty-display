@@ -27,6 +27,11 @@ const adminRoutes: Routes = [
     component: AdminHomeComponent,
     children: [
       {
+        path: '',
+        redirectTo: '/admin/manage-projects/read',
+        pathMatch: 'full'
+      },
+      {
         path: 'login',
         component: LoginComponent
       },

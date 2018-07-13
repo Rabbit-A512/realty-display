@@ -12,15 +12,40 @@
   <tbody>
     <tr *ngFor="let message of messages">
       <td>{{message.project_name}}</td>
-      <td>{{message.content}}</td>
+      <td>
+        <button
+          (click)="openViewModal(view)"
+          class="btn btn-outline-primary btn-sm">查看</button>
+      </td>
       <td>{{message.phone}}</td>
       <td>{{message.time | date}}</td>
       <td>{{message.call}}</td>
       <td>
         <button
-          (click)="open(delete)"
+          (click)="openDeleteModal(delete)"
           class="btn btn-danger btn-sm">刪除</button>
       </td>
+
+      <ng-template #view let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">查看留言</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">联系人：{{ message.call }}</h5>
+              <h6 class="card-subtitle mb-2 text-muted"><i class="fa fa-phone"></i>{{ message.phone }}</h6>
+              <p class="card-text">{{ message.content }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-dark" (click)="c('Cross click')">关闭</button>
+        </div>
+      </ng-template>
 
       <ng-template #delete let-c="close" let-d="dismiss">
         <div class="modal-header">

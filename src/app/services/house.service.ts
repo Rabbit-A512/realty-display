@@ -6,6 +6,7 @@ import { throwError } from 'rxjs';
 import { AppError } from './errors/app-error';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { handleServiceError } from './errors/app-error-handler';
 
 @Injectable({
   providedIn: 'root'
@@ -23,38 +24,31 @@ export class HouseService {
     private router: Router
   ) { }
 
-  private handleError(error) {
-    if (error.status === 401) {
-      this.router.navigate(['/admin/login']);
-      return;
-      // return throwError(new Unauthorized(error));
-    } else {
-      return throwError(new AppError(error));
-    }
-  }
-
   getOneById(id) {
-    return this.http.get(`${this.url}/${id}`);
+    return this.http.get(`${this.url}/${id}`)
+      .pipe(
+        catchError(handleServiceError)
+      );
   }
 
   create(house) {
     return this.http.post(this.url, house, this.httpOptions)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 
   update(house) {
     return this.http.put(`${this.url}/${house.house_type_id}`, _.omit(house, ['house_type_id']), this.httpOptions)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 
   delete(id) {
     return this.http.delete(`${this.url}/${id}`, this.httpOptions)
       .pipe(
-        catchError(this.handleError)
+        catchError(handleServiceError)
       );
   }
 }

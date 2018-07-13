@@ -1,9 +1,9 @@
 <div class="text-center container">
   <div class="row">
     <div class="col-md-4 form-group mx-auto">
-      <p *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</p>
       <label for="password">请输入管理员密码</label>
       <input type="password" class="form-control" id="password" #password>
+      <p *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</p>
       <button
         (click)="doLogin(password)"
         class="btn btn-primary btn-block my-2">登录</button>
