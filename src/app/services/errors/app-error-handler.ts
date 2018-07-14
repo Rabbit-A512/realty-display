@@ -9,7 +9,6 @@ import { NotFound } from './not-found';
 export class AppErrorHandler extends ErrorHandler {
   handleError(error) {
     alert('An unexpected error occurred.');
-    alert(error);
     console.log(error);
   }
 }

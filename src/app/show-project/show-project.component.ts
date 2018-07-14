@@ -18,6 +18,8 @@ export class ShowProjectComponent implements OnInit {
   form: FormGroup;
   messageModal: NgbModalRef;
 
+  error: any;
+
   constructor(
     private projectService: ProjectService,
     private messageService: MessageService,
@@ -33,7 +35,13 @@ export class ShowProjectComponent implements OnInit {
           .subscribe(project => {
             this.project = project as Project;
             this.location = this.project.location.split(',').map(v => +v);
+          }, error => {
+            alert('Message service error');
+            this.error = error;
           });
+      }, error => {
+        alert('Route param error');
+        this.error = error;
       });
 
     this.form = this.fb.group({

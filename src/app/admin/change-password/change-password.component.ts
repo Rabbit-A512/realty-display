@@ -31,10 +31,6 @@ export class ChangePasswordComponent implements OnInit {
     });
   }
 
-  debug(f) {
-    console.log(f);
-  }
-
   confirmPasswordValidator(form: FormGroup): { [s: string]: boolean } {
     if (form.get('new_password').value !== form.get('confirm').value) {
       return { unConfirmedPassword: true };
@@ -47,7 +43,6 @@ export class ChangePasswordComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.authService.logout();
-        this.router.navigate(['/admin/login']);
       }, (error: AppError) => {
         if (error instanceof Unauthorized) {
           this.router.navigate(['/admin/login']);
