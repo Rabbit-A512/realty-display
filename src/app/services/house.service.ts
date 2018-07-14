@@ -32,6 +32,11 @@ export class HouseService {
   }
 
   create(house) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.post(this.url, house, this.httpOptions)
       .pipe(
         catchError(handleServiceError)
@@ -39,6 +44,11 @@ export class HouseService {
   }
 
   update(house) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.put(`${this.url}/${house.house_type_id}`, _.omit(house, ['house_type_id']), this.httpOptions)
       .pipe(
         catchError(handleServiceError)
@@ -46,6 +56,11 @@ export class HouseService {
   }
 
   delete(id) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.delete(`${this.url}/${id}`, this.httpOptions)
       .pipe(
         catchError(handleServiceError)

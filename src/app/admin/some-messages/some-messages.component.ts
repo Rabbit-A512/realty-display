@@ -19,6 +19,7 @@ export class SomeMessagesComponent implements OnInit {
   ) { }
 
   loadMessages() {
+    this.messages = [];
     this.route.paramMap
       .subscribe(params => {
         this.projectService.getOneById(params.get('project_id'))

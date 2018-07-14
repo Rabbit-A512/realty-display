@@ -23,6 +23,11 @@ export class CarouselService {
   constructor(private http: HttpClient) { }
 
   deleteProjectCarousel(id: string) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.delete(`${this.project_carousel_url}/${id}`, this.httpOptions)
       .pipe(
         catchError(handleServiceError)
@@ -30,6 +35,11 @@ export class CarouselService {
   }
 
   deleteHouseCarousel(id: string) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.delete(`${this.house_carousel_url}/${id}`, this.httpOptions)
       .pipe(
         catchError(handleServiceError)
@@ -37,6 +47,11 @@ export class CarouselService {
   }
 
   showHomeCarousel(id) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.post(`${this.home_carousel_url}/${id}`, {}, this.httpOptions)
       .pipe(
         catchError(handleServiceError)
@@ -44,6 +59,11 @@ export class CarouselService {
   }
 
   unshowHomeCarousel(id) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.delete(`${this.home_carousel_url}/${id}`, this.httpOptions)
       .pipe(
         catchError(handleServiceError)

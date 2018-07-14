@@ -27,6 +27,7 @@ export class ReadHouseComponent implements OnInit {
   ) { }
 
   loadHouseTypes() {
+    this.houses = [];
     this.route.paramMap
       .subscribe(params => {
         console.log(params);

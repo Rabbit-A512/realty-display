@@ -46,6 +46,11 @@ export class MessageService {
   }
 
   update(message) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.put(`${this.url}/${message.message_id}`, _.omit(message, ['message_id']), this.httpOptions)
       .pipe(
         catchError(handleServiceError)
@@ -53,6 +58,11 @@ export class MessageService {
   }
 
   delete(id) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.delete(`${this.url}/${id}`, this.httpOptions)
       .pipe(
         catchError(handleServiceError)
