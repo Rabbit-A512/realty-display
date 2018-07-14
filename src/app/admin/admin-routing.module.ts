@@ -43,6 +43,7 @@ const adminRoutes: Routes = [
       {
         path: 'manage-messages',
         component: ManageMessagesComponent,
+        canActivate: [AuthGuard],
         children: [
           {
             path: '',
