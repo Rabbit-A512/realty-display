@@ -636,3 +636,27 @@ res:
   "is_read": false
 }
 ```
+
+PUT /api/messages/:id
+
+req:
+
+```json
+{
+  "is_read": true // or false
+}
+```
+
+res:
+
+```json
+{
+  "message_id": "uuid",
+  "project_id": "uuid",
+  "content": "asd",
+  "phone": "15087186168",
+  "call": "Mr. Wang",
+  "time": "timestamp",
+  "is_read": false
+}
+```
