@@ -39,7 +39,41 @@ export class ShowMessagesComponent implements OnInit {
       .subscribe(deletedMessage => {
         console.log(deletedMessage);
         this.deleteModal.close();
-        this.router.navigate(['/admin/manage-messages']);
+        // this.router.navigate(['/admin/manage-messages']);
+        this.messageChange.emit({ messageChange: true });
+      }, (error: AppError) => {
+        if (error instanceof Unauthorized) {
+          this.router.navigate(['/admin/login']);
+        } else {
+          throw error;
+        }
+      });
+  }
+
+  readMessage(id) {
+    const temp = {
+      message_id: id,
+      is_read: true
+    };
+    this.messageService.update(temp)
+      .subscribe(updatedMessage => {
+        this.messageChange.emit({ messageChange: true });
+      }, (error: AppError) => {
+        if (error instanceof Unauthorized) {
+          this.router.navigate(['/admin/login']);
+        } else {
+          throw error;
+        }
+      });
+  }
+
+  unreadMessage(id) {
+    const temp = {
+      message_id: id,
+      is_read: false
+    };
+    this.messageService.update(temp)
+      .subscribe(updatedMessage => {
         this.messageChange.emit({ messageChange: true });
       }, (error: AppError) => {
         if (error instanceof Unauthorized) {

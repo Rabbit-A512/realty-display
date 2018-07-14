@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 
 import { House } from './../../models/house';
 import { HouseService } from './../../services/house.service';
+import { AppError } from '../../services/errors/app-error';
+import { Unauthorized } from '../../services/errors/unauthorized';
 
 @Component({
   selector: 'app-edit-house',
@@ -57,7 +59,11 @@ export class EditHouseComponent implements OnInit, OnChanges {
     value.project_id = this.project_id;
     this.houseService.create(value)
       .subscribe(async new_house => {
-        await this.router.navigate(['/admin/manage-projects']);
+        this.router.navigate(['/admin/manage-projects']);
+      }, (error: AppError) => {
+        if (error instanceof Unauthorized) {
+          this.router.navigate(['/admin/login']);
+        }
       });
   }
 
@@ -66,8 +72,12 @@ export class EditHouseComponent implements OnInit, OnChanges {
     value.house_type_id = this.house.house_type_id;     this.houseService.update(value)
       .subscribe(async updated_house => {
         console.log(updated_house);
-        await this.router.navigate(['/admin/manage-houses/read', this.house.project_id]);
-      });
+        this.router.navigate(['/admin/manage-houses/read', this.house.project_id]);
+      }, (error: AppError) => {
+      if (error instanceof Unauthorized) {
+        this.router.navigate(['/admin/login']);
+      }
+    });
   }
 
   onTagChange(args: TagChangeEventArgs) {

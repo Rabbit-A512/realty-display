@@ -4,8 +4,9 @@
       <th>项目名称</th>
       <th>留言内容</th>
       <th>电话号码</th>
-      <th>留言时间</th>
       <th>联系人称呼</th>
+      <th>留言时间</th>
+      <th>状态</th>
       <th>操作</th>
     </tr>
   </thead>
@@ -18,12 +19,25 @@
           class="btn btn-outline-primary btn-sm">查看</button>
       </td>
       <td>{{message.phone}}</td>
-      <td>{{message.time | date}}</td>
       <td>{{message.call}}</td>
+      <td>{{message.time | date:'shortDate'}}</td>
+      <td>
+        <h5 *ngIf="message.is_read"><span class="badge badge-primary">已读</span></h5>
+        <h5 *ngIf="!message.is_read"><span class="badge badge-warning">未读</span></h5>
+      </td>
       <td>
         <button
+          (click)="readMessage(message.message_id)"
+          *ngIf="!message.is_read"
+          class="btn btn-primary btn-sm mr-1">设为已读</button>
+        <button
+          (click)="unreadMessage(message.message_id)"
+          *ngIf="message.is_read"
+          class="btn btn-warning btn-sm mr-1">设为未读</button>
+        <button
           (click)="openDeleteModal(delete)"
-          class="btn btn-danger btn-sm">刪除</button>
+          class="btn btn-danger btn-sm mr-1">刪除</button>
+
       </td>
 
       <ng-template #view let-c="close" let-d="dismiss">

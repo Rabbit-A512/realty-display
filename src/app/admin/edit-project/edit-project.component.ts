@@ -74,6 +74,7 @@ export class EditProjectComponent implements OnInit, OnChanges {
 
   updateProject(value) {
     value.project_id = this.project.project_id;
+    console.log(value);
     this.projectService.update(value)
       .subscribe(async updated_project => {
         await this.router.navigate(['/admin/manage-projects/read']);

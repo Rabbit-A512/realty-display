@@ -42,6 +42,11 @@ export class AuthService {
   }
 
   changePassword(passwords) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.put(this.change_password_url, passwords, this.httpOptions)
       .pipe(
         catchError(handleServiceError)

@@ -36,6 +36,11 @@ export class ProjectService {
   }
 
   create(project) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.post(this.url, project, this.httpOptions)
       .pipe(
         catchError(handleServiceError)
@@ -43,6 +48,11 @@ export class ProjectService {
   }
 
   update(project) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.put(`${this.url}/${project.project_id}`, _.omit(project, ['project_id']), this.httpOptions)
       .pipe(
         catchError(handleServiceError)
@@ -50,6 +60,11 @@ export class ProjectService {
   }
 
   delete(id) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'x-auth-token': localStorage.getItem('token') ? localStorage.getItem('token') : ''
+      })
+    };
     return this.http.delete(`${this.url}/${id}`, this.httpOptions)
       .pipe(
         catchError(handleServiceError)
