@@ -4,7 +4,7 @@
 
 本文档列出房产展示项目开发过程中，与**前端**有关的问题和注意事项，并且记录相关工作。
 
-## 需要修改的地方
+## 修改意见
 
 - ~~项目和户型的管理使用Grid实现，要多展示信息，使用ignite-angular或ng-zorro~~
 - ~~编辑项目（户型）信息的页面，最上方标题显示项目（户型）名称~~
@@ -17,11 +17,19 @@
 - ~~客户端首页所有项目模块，减少左右留白~~
 - ~~客户端项目缩略图中，在项目名称之外，加一行项目描述，字体适当调小~~
 - ~~客户端展示项目页面中的户型缩略图，使用横向不包裹的布局，可以滑动~~
-- 客户端的地图控件，加入用户当前位置
+- 客户端的地图控件，加入用户当前位置（暂时不做）
 - ~~客户端留言的modal，修改顺序为：电话->称呼->内容~~
 - ~~后台管理页面，调整留言管理的表格，使用modal展示留言内容~~
 - 服务器获取openid，实现用户认证
 - 服务器实现搜索功能（留言搜索、项目搜索）
+- 户型展示界面增加返回项目按钮
+- 项目下方的首页和留言按钮加宽，下方留白
+- 首页项目缩略图，将描述控制在两行，最终使Card的高度一致，字体稍微调大
+- 点击图片查看大图（优先级较低）
+- 项目展示界面的tag换用不同的颜色显示，注意换行的问题
+- 增加用户认证界面，包括phone, name, bio, checked(后台设置默认值)四个字段，做出modal直接跳过即可
+- 增加后台用户管理界面，稍微填几个演示数据
+- 重构代码
 
 ## 微信公众号配置
 
@@ -659,4 +667,56 @@ res:
   "time": "timestamp",
   "is_read": false
 }
+```
+
+### 搜索
+
+搜索留言
+
+POST /api/messages-search
+
+req:
+
+```json
+{
+  "is_read": true,
+  "datetime": "2017-08-09",
+  "phone": "15087186168",
+  "call": "Mr. White",
+  "content": "content"
+}
+```
+
+res:
+
+```json
+[
+  {
+    "message_id": "uuid",
+    "project_id": "uuid",
+    "content": "asd",
+    "phone": "15087186168",
+    "call": "Mr. Wang",
+    "time": "timestamp",
+    "is_read": false
+  },
+  {
+    "message_id": "uuid",
+    "project_id": "uuid",
+    "content": "asd",
+    "phone": "15087186168",
+    "call": "Mr. Wang",
+    "time": "timestamp",
+    "is_read": false
+  },
+  {
+    "message_id": "uuid",
+    "project_id": "uuid",
+    "content": "asd",
+    "phone": "15087186168",
+    "call": "Mr. Wang",
+    "time": "timestamp",
+    "is_read": false
+  }
+]
 ```
