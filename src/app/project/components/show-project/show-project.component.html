@@ -1,0 +1,93 @@
+<app-my-carousel [carousels]="project?.carousels" [isProjectCarousel]="true"></app-my-carousel>
+<div>{{error | json}}</div>
+<div class="p-3">
+  <app-project-info [project]="project"></app-project-info>
+  <hr>
+  <app-reason [reason]="project?.reason"></app-reason>
+  <hr>
+  <app-houses-on-sale [house_ids]="project?.house_type_ids"></app-houses-on-sale>
+  <hr>
+  <app-project-detail [detail]="project?.detail" [location]="location"></app-project-detail>
+  <hr>
+</div>
+<div class="btn-group mb-3 d-flex" role="group">
+  <button [routerLink]="['/']" class="btn btn-primary flex-fill">
+    <i class="fa fa-home fa-lg d-inline-block mr-1"></i>
+    <span>返回所有项目</span>
+  </button>
+  <button (click)="open(message)" class="btn btn-warning flex-fill">
+    <i class="fa fa-comment-o fa-lg d-inline-block mr-1"></i>
+    <span>给该项目留言</span>
+  </button>
+</div>
+
+<ng-template #message let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">给该项目留言</h4>
+    <button type="button" class="close" (click)="d('Cross click')">
+      <span>&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="form">
+
+      <div class="form-group">
+        <label for="phone">电话号码：</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-phone"></i>
+            </span>
+          </div>
+          <input
+            id="phone"
+            formControlName="phone"
+            type="tel"
+            class="form-control">
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="call">称呼：</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-user"></i>
+            </span>
+          </div>
+          <input
+            formControlName="call"
+            class="form-control"
+            id="call"
+            aria-describedby="help"
+            type="text">
+        </div>
+        <small id="help" class="form-text text-muted">希望工作人员怎么称呼您</small>
+      </div>
+      <div class="form-group">
+        <label for="content">内容：</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-pencil"></i>
+            </span>
+          </div>
+          <textarea
+            placeholder="留言长度不能超过100字"
+            formControlName="content"
+            class="form-control"
+            id="content"></textarea>
+        </div>
+        <p *ngIf="content.touched && content.hasError('maxlength')" class="alert alert-danger">留言长度不能超过100</p>
+        <p *ngIf="content.touched && content.hasError('required')" class="alert alert-danger">留言不能为空</p>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      [disabled]="form.invalid"
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="submitMessage(form.value)">提交</button>
+  </div>
+</ng-template>

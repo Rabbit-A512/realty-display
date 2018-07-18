@@ -1,0 +1,67 @@
+<app-my-carousel *ngIf="haveCarousels" [carousels]="shown_carousels" [isProjectCarousel]="true"></app-my-carousel>
+<div class="container-fluid my-3">
+  <h4>所有项目</h4>
+  <hr>
+  <div class="row">
+    <div class="col-6 my-2" *ngFor="let project of projects">
+      <app-project-thumb [project]="project"></app-project-thumb>
+    </div>
+  </div>
+</div>
+
+<button (click)="openConfirmModal(confirm)" class="btn btn-warning btn-block">用户认证</button>
+
+<ng-template #confirm let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h6 class="modal-title">请输入您的个人信息用于审核</h6>
+    <button type="button" class="close" (click)="d('Cross click')">
+      &times;
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="name">姓名</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-user-o"></i>
+            </span>
+          </div>
+          <input
+            class="form-control"
+            id="name"
+            type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">联系电话</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-phone"></i>
+            </span>
+          </div>
+          <input
+            class="form-control"
+            id="phone"
+            type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="bio">个人简介</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="fa fa-pencil"></i>
+            </span>
+          </div>
+          <textarea class="form-control" id="bio" rows="2"></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Submit click')">提交</button>
+  </div>
+</ng-template>

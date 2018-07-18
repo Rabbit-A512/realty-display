@@ -1,25 +1,26 @@
-import { HomeCarouselComponent } from './home-carousel/home-carousel.component';
-import { HouseCarouselComponent } from './house-carousel/house-carousel.component';
-import { ReadHouseComponent } from './read-house/read-house.component';
-import { UpdateProjectComponent } from './update-project/update-project.component';
-import { ReadProjectComponent } from './read-project/read-project.component';
+import { HomeCarouselComponent } from '../admin-carousel/components/home-carousel/home-carousel.component';
+import { HouseCarouselComponent } from '../admin-carousel/components/house-carousel/house-carousel.component';
+import { ReadHouseComponent } from '../admin-house/components/read-house/read-house.component';
+import { UpdateProjectComponent } from '../admin-project/components/update-project/update-project.component';
+import { ReadProjectComponent } from '../admin-project/components/read-project/read-project.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AdminHomeComponent } from './admin-home/admin-home.component';
-import { ManageCarouselComponent } from './manage-carousel/manage-carousel.component';
-import { ManageHousesComponent } from './manage-houses/manage-houses.component';
-import { ManageProjectsComponent } from './manage-projects/manage-projects.component';
-import { NewProjectComponent } from './new-project/new-project.component';
-import { NewHouseComponent } from './new-house/new-house.component';
-import { UpdateHouseComponent } from './update-house/update-house.component';
-import { ProjectCarouselComponent } from './project-carousel/project-carousel.component';
-import { LoginComponent } from './login/login.component';
-import { AuthGuard } from '../services/auth.guard';
-import { ManageMessagesComponent } from './manage-messages/manage-messages.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
-import { AllMessagesComponent } from './all-messages/all-messages.component';
-import { SomeMessagesComponent } from './some-messages/some-messages.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { ManageCarouselComponent } from '../admin-carousel/components/manage-carousel/manage-carousel.component';
+import { ManageHousesComponent } from '../admin-house/components/manage-houses/manage-houses.component';
+import { ManageProjectsComponent } from '../admin-project/components/manage-projects/manage-projects.component';
+import { NewProjectComponent } from '../admin-project/components/new-project/new-project.component';
+import { NewHouseComponent } from '../admin-house/components/new-house/new-house.component';
+import { UpdateHouseComponent } from '../admin-house/components/update-house/update-house.component';
+import { ProjectCarouselComponent } from '../admin-carousel/components/project-carousel/project-carousel.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './services/auth.guard';
+import { ManageMessagesComponent } from '../admin-message/components/manage-messages/manage-messages.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { AllMessagesComponent } from '../admin-message/components/all-messages/all-messages.component';
+import { SomeMessagesComponent } from '../admin-message/components/some-messages/some-messages.component';
+import { ManageUsersComponent } from '../admin-user/components/manage-users/manage-users.component';
 
 const adminRoutes: Routes = [
   {
@@ -38,7 +39,11 @@ const adminRoutes: Routes = [
       {
         path: 'change-password',
         component: ChangePasswordComponent,
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'manage-users',
+        component: ManageUsersComponent
       },
       {
         path: 'manage-messages',

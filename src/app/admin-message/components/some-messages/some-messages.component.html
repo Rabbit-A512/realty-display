@@ -1,0 +1,5 @@
+<app-search-messages
+  [project_id]="project_id"
+  (receiveResults)="updateMessages($event)"
+  (resetResults)="loadMessages()"></app-search-messages>
+<app-show-messages [messages]="messages" (messageChange)="doMessageChange($event)"></app-show-messages>
