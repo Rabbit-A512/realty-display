@@ -1,0 +1,9 @@
+<div class="card h-100">
+  <a [routerLink]="['/project', project.project_id]">
+    <img [src]="project?.carousels[0]?.url" alt="項目封面" class="card-img-top">
+  </a>
+  <div class="card-body bg-light">
+    <p class="text-small">{{ project.name }}</p>
+    <p class="text-small text-muted">{{ project.address | summary: 15 }}</p>
+  </div>
+</div>

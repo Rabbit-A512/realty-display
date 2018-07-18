@@ -1,0 +1,18 @@
+<app-my-carousel [carousels]="house?.carousels" [isProjectCarousel]="false"></app-my-carousel>
+<div class="p-3">
+    <app-house-info [house]="house"></app-house-info>
+    <hr>
+    <app-house-detail [house]="house"></app-house-detail>
+    <hr>
+    <app-reason [reason]="house?.reason"></app-reason>
+</div>
+<div class="btn-group mb-3 d-flex" role="group">
+  <button [routerLink]="['/']" class="btn btn-primary flex-fill">
+    <i class="fa fa-home fa-lg d-inline-block mr-1"></i>
+    <span>返回首页</span>
+  </button>
+  <button [routerLink]="['/project', house?.project_id]" class="btn btn-warning flex-fill">
+    <i class="fa fa-building-o fa-lg d-inline-block mr-1"></i>
+    <span>返回项目</span>
+  </button>
+</div>

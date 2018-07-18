@@ -1,0 +1,24 @@
+<div class="container-fluid my-1">
+  <div class="row">
+    <div class="col">
+      <span>{{ house?.name }}</span>
+    </div>
+    <div class="col text-right">
+      <span>约{{ house?.price }}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <span class="text-muted smaller">{{ house?.size }}</span>
+    </div>
+  </div>
+  <div class="row">
+      <div *ngIf="house?.tags">
+        <span *ngFor="let tag of house.tags; index as i">
+          <app-tag *ngIf="i % 3 === 0" [name]=tag [color]="'primary'"></app-tag>
+          <app-tag *ngIf="i % 3 === 1" [name]=tag [color]="'success'"></app-tag>
+          <app-tag *ngIf="i % 3 === 2" [name]=tag [color]="'danger'"></app-tag>
+        </span>
+      </div>
+  </div>
+</div>
